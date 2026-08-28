@@ -5,6 +5,7 @@ The Kitted catalog is local prototype seed data. Prices, reviews, and inventory 
 ## Files and usage
 
 - `data/catalog.json` is the consumer-ready dataset. It contains 40 representative products spanning camping, hiking, backpacking, snowboarding, skiing, and mountain biking.
+- `data/catalog.json` is the consumer-ready dataset. It contains 31 representative products spanning camping, hiking, and backpacking.
 - `data/catalog.schema.json` is the JSON Schema (Draft 2020-12) contract and is the source of truth for field names, allowed taxonomy values, and basic constraints.
 - `scripts/validate-catalog.mjs` performs dataset-wide and cross-field checks that JSON Schema alone cannot express conveniently.
 - Run `npm test` (or `npm run validate:catalog`) after changing either data file.
@@ -18,6 +19,9 @@ Activities use only `camping`, `hiking`, `backpacking`, `snowboarding`, `skiing`
 Categories use stable kebab-case values:
 
 `tents`, `sleeping-bags`, `sleeping-pads`, `backpacks`, `footwear`, `apparel`, `cookware`, `lighting`, `hydration`, `navigation`, `safety`, `trekking-poles`, `snowboards`, `skis`, and `bikes`. The three added equipment categories are the minimum needed for meaningful new-activity coverage; snow boots reuse `footwear`.
+Activities use only `camping`, `hiking`, and `backpacking`. A product may support more than one activity. Categories use stable kebab-case values:
+
+`tents`, `sleeping-bags`, `sleeping-pads`, `backpacks`, `footwear`, `apparel`, `cookware`, `lighting`, `hydration`, `navigation`, `safety`, and `trekking-poles`.
 
 Availability uses `in-stock`, `low-stock`, or `out-of-stock`. `quantity` and `addToCartEligible` deliberately repeat the state needed by product-detail and cart controls: an out-of-stock item must have quantity zero and cannot be added; either available state must have positive quantity and can be added.
 
@@ -54,3 +58,5 @@ The validator exits nonzero and lists record paths when it finds:
 - missing or invalid snow/mountain-bike attributes, including attributes attached to an unrelated activity.
 
 The checked-in sample currently includes meaningful coverage for all six activities, all 15 categories, multiple stock states, valid sortable numbers, category- and activity-specific filters where applicable, and complete product-detail content.
+
+The checked-in sample currently includes all three activities, all 12 categories, multiple stock states, valid sortable numbers, category-specific filters where applicable, and complete product-detail content.
