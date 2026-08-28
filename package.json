@@ -1,0 +1,10 @@
+{
+  "name": "kitted-mvp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local prototype catalog data for Kitted",
+  "scripts": {
+    "validate:catalog": "node scripts/validate-catalog.mjs",
+    "test": "npm run validate:catalog"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kitted.local/schemas/catalog.schema.json",
+  "title": "Kitted MVP catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "products"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "products": {
+      "type": "array",
+      "minItems": 25,
+      "maxItems": 40,
+      "items": { "$ref": "#/$defs/product" }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": { "type": "string", "minLength": 1 },
+    "activity": { "enum": ["camping", "hiking", "backpacking", "snowboarding", "skiing", "mountain-biking"] },
+    "product": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "brand", "category", "activities", "description", "price", "rating", "reviewCount", "image", "availability", "tags", "specifications", "filterAttributes", "recommendationAttributes"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^KIT-[0-9]{4}$" },
+        "name": { "$ref": "#/$defs/nonEmptyString" },
+        "brand": { "$ref": "#/$defs/nonEmptyString" },
+        "category": { "enum": ["tents", "sleeping-bags", "sleeping-pads", "backpacks", "footwear", "apparel", "cookware", "lighting", "hydration", "navigation", "safety", "trekking-poles", "snowboards", "skis", "bikes"] },
+        "activities": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/activity" } },
+        "description": { "type": "string", "minLength": 20 },
+        "price": { "type": "number", "exclusiveMinimum": 0, "multipleOf": 0.01 },
+        "rating": { "type": "number", "minimum": 0, "maximum": 5 },
+        "reviewCount": { "type": "integer", "minimum": 0 },
+        "image": { "type": "object", "additionalProperties": false, "required": ["src", "alt"], "properties": { "src": { "$ref": "#/$defs/nonEmptyString" }, "alt": { "$ref": "#/$defs/nonEmptyString" } } },
+        "availability": { "type": "object", "additionalProperties": false, "required": ["status", "quantity", "addToCartEligible"], "properties": { "status": { "enum": ["in-stock", "low-stock", "out-of-stock"] }, "quantity": { "type": "integer", "minimum": 0 }, "addToCartEligible": { "type": "boolean" } } },
+        "tags": { "type": "array", "minItems": 2, "uniqueItems": true, "items": { "$ref": "#/$defs/nonEmptyString" } },
+        "specifications": { "type": "object", "minProperties": 2, "additionalProperties": { "type": ["string", "number", "boolean"] } },
+        "filterAttributes": {
+          "type": "object", "additionalProperties": false,
+          "required": ["weightGrams", "waterproof", "seasonality"],
+          "properties": {
+            "weightGrams": { "type": "integer", "minimum": 1 },
+            "waterproof": { "type": "boolean" },
+            "seasonality": { "enum": ["all-season", "three-season", "summer", "winter"] },
+            "capacityLiters": { "type": "number", "exclusiveMinimum": 0 },
+            "personCapacity": { "type": "integer", "minimum": 1 },
+            "sizeRange": { "$ref": "#/$defs/nonEmptyString" },
+            "snow": {
+              "type": "object", "additionalProperties": false,
+              "minProperties": 1,
+              "properties": {
+                "skillLevel": { "enum": ["beginner", "intermediate", "advanced"] },
+                "lengthCm": { "type": "integer", "minimum": 70, "maximum": 210 },
+                "terrainPreference": { "enum": ["all-mountain", "groomed", "park", "powder", "touring"] },
+                "warmth": { "enum": ["uninsulated", "light", "medium", "high"] }
+              }
+            },
+            "mountainBiking": {
+              "type": "object", "additionalProperties": false,
+              "required": ["discipline", "wheelSizeInches", "frameSizeRange", "suspensionType", "suspensionTravelMm"],
+              "properties": {
+                "discipline": { "enum": ["cross-country", "trail", "enduro", "downhill"] },
+                "wheelSizeInches": { "enum": [26, 27.5, 29] },
+                "frameSizeRange": { "$ref": "#/$defs/nonEmptyString" },
+                "suspensionType": { "enum": ["rigid", "hardtail", "full-suspension"] },
+                "suspensionTravelMm": { "type": "integer", "minimum": 0, "maximum": 250 }
+              }
+            }
+          }
+        },
+        "recommendationAttributes": {
+          "type": "object", "additionalProperties": false,
+          "required": ["experienceLevels", "tripDurationDays", "climates", "terrains", "groupSizes", "packWeightPriority"],
+          "properties": {
+            "experienceLevels": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["beginner", "intermediate", "advanced"] } },
+            "tripDurationDays": { "type": "object", "additionalProperties": false, "required": ["min", "max"], "properties": { "min": { "type": "integer", "minimum": 1 }, "max": { "type": "integer", "minimum": 1 } } },
+            "climates": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["dry", "wet", "cold", "hot", "temperate"] } },
+            "terrains": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["campground", "trail", "mountain", "forest", "desert"] } },
+            "groupSizes": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "integer", "minimum": 1, "maximum": 8 } },
+            "packWeightPriority": { "enum": ["low", "medium", "high"] }
+          }
+        }
+      }
+    }
+  }
+}

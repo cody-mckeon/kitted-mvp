@@ -6,3 +6,7 @@ Kitted helps recreational outdoor enthusiasts confidently identify and purchase 
 ## Product Details
 
 Kitted is a B2C e-commerce platform for recreational outdoor enthusiasts, offering an Amazon-like shopping experience focused on outdoor gear. The product launch plan will identify this audience's pain points and needs, explain how Kitted makes finding and purchasing the right gear easier, and assess the existing e-commerce platforms and marketplaces where the product could be sold.
+
+## Local catalog
+
+The prototype product dataset, JSON Schema, taxonomy, and validation instructions are documented in [`docs/catalog.md`](docs/catalog.md). Run `npm test` to verify the checked-in catalog before consuming it in application work.

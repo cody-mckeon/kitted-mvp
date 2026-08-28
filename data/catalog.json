@@ -1,0 +1,2592 @@
+{
+  "schemaVersion": 1,
+  "products": [
+    {
+      "id": "KIT-0001",
+      "name": "Pinecrest 2 Tent",
+      "brand": "Northstar",
+      "category": "tents",
+      "activities": [
+        "camping",
+        "backpacking"
+      ],
+      "description": "A simple freestanding two-person shelter with quick setup and dependable rain protection.",
+      "price": 229.0,
+      "rating": 4.7,
+      "reviewCount": 184,
+      "image": {
+        "src": "/images/products/kit-0001.webp",
+        "alt": "Pinecrest 2 Tent by Northstar"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 18,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "tent",
+        "two-person",
+        "freestanding"
+      ],
+      "specifications": {
+        "floorMaterial": "40D ripstop nylon",
+        "peakHeightCm": 105
+      },
+      "filterAttributes": {
+        "weightGrams": 2100,
+        "waterproof": true,
+        "seasonality": "three-season",
+        "personCapacity": 2
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 4
+        },
+        "climates": [
+          "wet",
+          "temperate"
+        ],
+        "terrains": [
+          "campground",
+          "trail",
+          "forest"
+        ],
+        "groupSizes": [
+          1,
+          2
+        ],
+        "packWeightPriority": "medium"
+      }
+    },
+    {
+      "id": "KIT-0002",
+      "name": "Basecamp 4 Tent",
+      "brand": "Northstar",
+      "category": "tents",
+      "activities": [
+        "camping"
+      ],
+      "description": "A roomy four-person campground tent with a tall ceiling and two convenient vestibules.",
+      "price": 349.95,
+      "rating": 4.8,
+      "reviewCount": 96,
+      "image": {
+        "src": "/images/products/kit-0002.webp",
+        "alt": "Basecamp 4 Tent by Northstar"
+      },
+      "availability": {
+        "status": "low-stock",
+        "quantity": 3,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "family",
+        "tent",
+        "four-person"
+      ],
+      "specifications": {
+        "floorMaterial": "150D polyester",
+        "peakHeightCm": 183
+      },
+      "filterAttributes": {
+        "weightGrams": 6200,
+        "waterproof": true,
+        "seasonality": "three-season",
+        "personCapacity": 4
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 7
+        },
+        "climates": [
+          "wet",
+          "temperate"
+        ],
+        "terrains": [
+          "campground"
+        ],
+        "groupSizes": [
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0003",
+      "name": "Summit Solo UL Tent",
+      "brand": "Ridgeline",
+      "category": "tents",
+      "activities": [
+        "backpacking"
+      ],
+      "description": "An ultralight single-person trekking-pole shelter designed for fast and remote trips.",
+      "price": 319.0,
+      "rating": 4.6,
+      "reviewCount": 71,
+      "image": {
+        "src": "/images/products/kit-0003.webp",
+        "alt": "Summit Solo UL Tent by Ridgeline"
+      },
+      "availability": {
+        "status": "out-of-stock",
+        "quantity": 0,
+        "addToCartEligible": false
+      },
+      "tags": [
+        "ultralight",
+        "solo",
+        "tent"
+      ],
+      "specifications": {
+        "floorMaterial": "20D silpoly",
+        "peakHeightCm": 112
+      },
+      "filterAttributes": {
+        "weightGrams": 910,
+        "waterproof": true,
+        "seasonality": "three-season",
+        "personCapacity": 1
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 8
+        },
+        "climates": [
+          "dry",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "mountain"
+        ],
+        "groupSizes": [
+          1
+        ],
+        "packWeightPriority": "high"
+      }
+    },
+    {
+      "id": "KIT-0004",
+      "name": "Cedar 20 Sleeping Bag",
+      "brand": "Ember",
+      "category": "sleeping-bags",
+      "activities": [
+        "camping",
+        "backpacking"
+      ],
+      "description": "A versatile synthetic mummy bag offering reliable warmth for cool three-season nights.",
+      "price": 159.5,
+      "rating": 4.5,
+      "reviewCount": 212,
+      "image": {
+        "src": "/images/products/kit-0004.webp",
+        "alt": "Cedar 20 Sleeping Bag by Ember"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 25,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "sleeping bag",
+        "synthetic",
+        "mummy"
+      ],
+      "specifications": {
+        "temperatureRatingC": -7,
+        "insulation": "recycled synthetic"
+      },
+      "filterAttributes": {
+        "weightGrams": 1350,
+        "waterproof": false,
+        "seasonality": "three-season"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 5
+        },
+        "climates": [
+          "cold",
+          "wet",
+          "temperate"
+        ],
+        "terrains": [
+          "campground",
+          "trail",
+          "forest"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "medium"
+      }
+    },
+    {
+      "id": "KIT-0005",
+      "name": "Drift 35 Down Quilt",
+      "brand": "Ember",
+      "category": "sleeping-bags",
+      "activities": [
+        "backpacking"
+      ],
+      "description": "A compressible down quilt that trims pack weight for mild-weather backpacking adventures.",
+      "price": 249.0,
+      "rating": 4.7,
+      "reviewCount": 88,
+      "image": {
+        "src": "/images/products/kit-0005.webp",
+        "alt": "Drift 35 Down Quilt by Ember"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 11,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "quilt",
+        "down",
+        "lightweight"
+      ],
+      "specifications": {
+        "temperatureRatingC": 2,
+        "fillPower": 800
+      },
+      "filterAttributes": {
+        "weightGrams": 680,
+        "waterproof": false,
+        "seasonality": "summer"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 8
+        },
+        "climates": [
+          "dry",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "mountain",
+          "desert"
+        ],
+        "groupSizes": [
+          1,
+          2
+        ],
+        "packWeightPriority": "high"
+      }
+    },
+    {
+      "id": "KIT-0006",
+      "name": "Camp Cozy 30 Bag",
+      "brand": "TrailNest",
+      "category": "sleeping-bags",
+      "activities": [
+        "camping"
+      ],
+      "description": "A roomy rectangular sleeping bag with soft lining for relaxed nights at the campground.",
+      "price": 89.99,
+      "rating": 4.3,
+      "reviewCount": 145,
+      "image": {
+        "src": "/images/products/kit-0006.webp",
+        "alt": "Camp Cozy 30 Bag by TrailNest"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 30,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "sleeping bag",
+        "rectangular",
+        "campground"
+      ],
+      "specifications": {
+        "temperatureRatingC": -1,
+        "shape": "rectangular"
+      },
+      "filterAttributes": {
+        "weightGrams": 2100,
+        "waterproof": false,
+        "seasonality": "three-season"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 5
+        },
+        "climates": [
+          "dry",
+          "temperate"
+        ],
+        "terrains": [
+          "campground"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0007",
+      "name": "Cloudrest Insulated Pad",
+      "brand": "TrailNest",
+      "category": "sleeping-pads",
+      "activities": [
+        "camping",
+        "backpacking"
+      ],
+      "description": "An insulated inflatable pad balancing compact packed size with comfortable trail support.",
+      "price": 139.0,
+      "rating": 4.6,
+      "reviewCount": 167,
+      "image": {
+        "src": "/images/products/kit-0007.webp",
+        "alt": "Cloudrest Insulated Pad by TrailNest"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 16,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "sleeping pad",
+        "insulated",
+        "inflatable"
+      ],
+      "specifications": {
+        "rValue": 4.2,
+        "thicknessCm": 8
+      },
+      "filterAttributes": {
+        "weightGrams": 620,
+        "waterproof": false,
+        "seasonality": "all-season"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 8
+        },
+        "climates": [
+          "cold",
+          "temperate"
+        ],
+        "terrains": [
+          "campground",
+          "trail",
+          "mountain",
+          "forest"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "medium"
+      }
+    },
+    {
+      "id": "KIT-0008",
+      "name": "Meadow Foam Mat",
+      "brand": "TrailNest",
+      "category": "sleeping-pads",
+      "activities": [
+        "camping",
+        "backpacking"
+      ],
+      "description": "A durable closed-cell foam mat that deploys instantly and cannot be punctured.",
+      "price": 54.95,
+      "rating": 4.2,
+      "reviewCount": 109,
+      "image": {
+        "src": "/images/products/kit-0008.webp",
+        "alt": "Meadow Foam Mat by TrailNest"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 22,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "sleeping pad",
+        "foam",
+        "durable"
+      ],
+      "specifications": {
+        "rValue": 2.0,
+        "thicknessCm": 2
+      },
+      "filterAttributes": {
+        "weightGrams": 410,
+        "waterproof": false,
+        "seasonality": "summer"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 4
+        },
+        "climates": [
+          "dry",
+          "hot",
+          "temperate"
+        ],
+        "terrains": [
+          "campground",
+          "trail",
+          "desert"
+        ],
+        "groupSizes": [
+          1,
+          2
+        ],
+        "packWeightPriority": "high"
+      }
+    },
+    {
+      "id": "KIT-0009",
+      "name": "Waypoint 28 Daypack",
+      "brand": "Ridgeline",
+      "category": "backpacks",
+      "activities": [
+        "hiking"
+      ],
+      "description": "A ventilated daypack with organized storage and hydration compatibility for long hikes.",
+      "price": 119.0,
+      "rating": 4.7,
+      "reviewCount": 263,
+      "image": {
+        "src": "/images/products/kit-0009.webp",
+        "alt": "Waypoint 28 Daypack by Ridgeline"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 20,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "daypack",
+        "hydration-compatible",
+        "hiking"
+      ],
+      "specifications": {
+        "frame": "internal perimeter",
+        "torsoFit": "41-53 cm"
+      },
+      "filterAttributes": {
+        "weightGrams": 940,
+        "waterproof": false,
+        "seasonality": "three-season",
+        "capacityLiters": 28
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 1
+        },
+        "climates": [
+          "dry",
+          "wet",
+          "hot",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "mountain",
+          "forest",
+          "desert"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "medium"
+      }
+    },
+    {
+      "id": "KIT-0010",
+      "name": "Traverse 55 Pack",
+      "brand": "Ridgeline",
+      "category": "backpacks",
+      "activities": [
+        "backpacking"
+      ],
+      "description": "An adjustable internal-frame pack built to carry multi-day loads in balanced comfort.",
+      "price": 249.95,
+      "rating": 4.8,
+      "reviewCount": 192,
+      "image": {
+        "src": "/images/products/kit-0010.webp",
+        "alt": "Traverse 55 Pack by Ridgeline"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 9,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "backpack",
+        "multi-day",
+        "internal-frame"
+      ],
+      "specifications": {
+        "maxLoadKg": 20,
+        "torsoFit": "43-56 cm"
+      },
+      "filterAttributes": {
+        "weightGrams": 1850,
+        "waterproof": false,
+        "seasonality": "three-season",
+        "capacityLiters": 55
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 2,
+          "max": 6
+        },
+        "climates": [
+          "dry",
+          "wet",
+          "cold",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "mountain",
+          "forest"
+        ],
+        "groupSizes": [
+          1,
+          2
+        ],
+        "packWeightPriority": "medium"
+      }
+    },
+    {
+      "id": "KIT-0011",
+      "name": "Aero 42 Pack",
+      "brand": "Skytrail",
+      "category": "backpacks",
+      "activities": [
+        "backpacking"
+      ],
+      "description": "A streamlined lightweight pack for experienced travelers with compact multi-day kits.",
+      "price": 289.0,
+      "rating": 4.5,
+      "reviewCount": 64,
+      "image": {
+        "src": "/images/products/kit-0011.webp",
+        "alt": "Aero 42 Pack by Skytrail"
+      },
+      "availability": {
+        "status": "low-stock",
+        "quantity": 2,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "backpack",
+        "lightweight",
+        "multi-day"
+      ],
+      "specifications": {
+        "maxLoadKg": 14,
+        "frame": "removable aluminum stay"
+      },
+      "filterAttributes": {
+        "weightGrams": 1120,
+        "waterproof": false,
+        "seasonality": "summer",
+        "capacityLiters": 42
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 2,
+          "max": 5
+        },
+        "climates": [
+          "dry",
+          "hot",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "mountain",
+          "desert"
+        ],
+        "groupSizes": [
+          1,
+          2
+        ],
+        "packWeightPriority": "high"
+      }
+    },
+    {
+      "id": "KIT-0012",
+      "name": "Granite Mid GTX Boots",
+      "brand": "Stonepath",
+      "category": "footwear",
+      "activities": [
+        "hiking",
+        "backpacking"
+      ],
+      "description": "Supportive waterproof mid-height boots for rocky trails and variable mountain weather.",
+      "price": 189.95,
+      "rating": 4.6,
+      "reviewCount": 318,
+      "image": {
+        "src": "/images/products/kit-0012.webp",
+        "alt": "Granite Mid GTX Boots by Stonepath"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 14,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "boots",
+        "waterproof",
+        "ankle-support"
+      ],
+      "specifications": {
+        "upper": "leather and mesh",
+        "outsole": "high-traction rubber"
+      },
+      "filterAttributes": {
+        "weightGrams": 1100,
+        "waterproof": true,
+        "seasonality": "all-season",
+        "sizeRange": "US 6-14"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 6
+        },
+        "climates": [
+          "wet",
+          "cold",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "mountain",
+          "forest"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0013",
+      "name": "Mesa Trail Runners",
+      "brand": "Stonepath",
+      "category": "footwear",
+      "activities": [
+        "hiking",
+        "backpacking"
+      ],
+      "description": "Breathable trail shoes with responsive cushioning for dry paths and fast-paced travel.",
+      "price": 139.0,
+      "rating": 4.4,
+      "reviewCount": 227,
+      "image": {
+        "src": "/images/products/kit-0013.webp",
+        "alt": "Mesa Trail Runners by Stonepath"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 27,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "shoes",
+        "trail-running",
+        "breathable"
+      ],
+      "specifications": {
+        "dropMm": 6,
+        "outsole": "multi-directional lug rubber"
+      },
+      "filterAttributes": {
+        "weightGrams": 590,
+        "waterproof": false,
+        "seasonality": "summer",
+        "sizeRange": "US 5-13"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 4
+        },
+        "climates": [
+          "dry",
+          "hot"
+        ],
+        "terrains": [
+          "trail",
+          "desert"
+        ],
+        "groupSizes": [
+          1,
+          2
+        ],
+        "packWeightPriority": "high"
+      }
+    },
+    {
+      "id": "KIT-0014",
+      "name": "Creekside Hikers",
+      "brand": "Stonepath",
+      "category": "footwear",
+      "activities": [
+        "hiking"
+      ],
+      "description": "Comfortable low hiking shoes with waterproof lining for day trips and wet paths.",
+      "price": 124.5,
+      "rating": 4.3,
+      "reviewCount": 156,
+      "image": {
+        "src": "/images/products/kit-0014.webp",
+        "alt": "Creekside Hikers by Stonepath"
+      },
+      "availability": {
+        "status": "out-of-stock",
+        "quantity": 0,
+        "addToCartEligible": false
+      },
+      "tags": [
+        "shoes",
+        "waterproof",
+        "day-hike"
+      ],
+      "specifications": {
+        "upper": "synthetic mesh",
+        "outsole": "trail rubber"
+      },
+      "filterAttributes": {
+        "weightGrams": 760,
+        "waterproof": true,
+        "seasonality": "three-season",
+        "sizeRange": "US 6-13"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 1
+        },
+        "climates": [
+          "wet",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "forest"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "medium"
+      }
+    },
+    {
+      "id": "KIT-0015",
+      "name": "Stormline Shell Jacket",
+      "brand": "Alpine Loom",
+      "category": "apparel",
+      "activities": [
+        "hiking",
+        "backpacking",
+        "camping"
+      ],
+      "description": "A seam-sealed rain shell with adjustable ventilation for sudden changes in weather.",
+      "price": 179.0,
+      "rating": 4.7,
+      "reviewCount": 205,
+      "image": {
+        "src": "/images/products/kit-0015.webp",
+        "alt": "Stormline Shell Jacket by Alpine Loom"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 19,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "rain jacket",
+        "shell",
+        "waterproof"
+      ],
+      "specifications": {
+        "fabric": "3-layer recycled nylon",
+        "pitZips": true
+      },
+      "filterAttributes": {
+        "weightGrams": 340,
+        "waterproof": true,
+        "seasonality": "all-season",
+        "sizeRange": "XS-XXL"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 8
+        },
+        "climates": [
+          "wet",
+          "cold",
+          "temperate"
+        ],
+        "terrains": [
+          "campground",
+          "trail",
+          "mountain",
+          "forest"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "high"
+      }
+    },
+    {
+      "id": "KIT-0016",
+      "name": "Sunridge Hoodie",
+      "brand": "Alpine Loom",
+      "category": "apparel",
+      "activities": [
+        "hiking",
+        "backpacking",
+        "camping"
+      ],
+      "description": "A lightweight sun hoodie with breathable stretch fabric for exposed warm-weather routes.",
+      "price": 69.95,
+      "rating": 4.5,
+      "reviewCount": 132,
+      "image": {
+        "src": "/images/products/kit-0016.webp",
+        "alt": "Sunridge Hoodie by Alpine Loom"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 33,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "sun protection",
+        "hoodie",
+        "breathable"
+      ],
+      "specifications": {
+        "upf": 50,
+        "fabric": "recycled polyester blend"
+      },
+      "filterAttributes": {
+        "weightGrams": 210,
+        "waterproof": false,
+        "seasonality": "summer",
+        "sizeRange": "XS-XXL"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 8
+        },
+        "climates": [
+          "dry",
+          "hot"
+        ],
+        "terrains": [
+          "campground",
+          "trail",
+          "mountain",
+          "desert"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "high"
+      }
+    },
+    {
+      "id": "KIT-0017",
+      "name": "Fireside Fleece",
+      "brand": "Alpine Loom",
+      "category": "apparel",
+      "activities": [
+        "camping",
+        "hiking"
+      ],
+      "description": "A warm midweight fleece layer for cool trail mornings and evenings around camp.",
+      "price": 89.0,
+      "rating": 4.4,
+      "reviewCount": 91,
+      "image": {
+        "src": "/images/products/kit-0017.webp",
+        "alt": "Fireside Fleece by Alpine Loom"
+      },
+      "availability": {
+        "status": "low-stock",
+        "quantity": 4,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "fleece",
+        "midlayer",
+        "warm"
+      ],
+      "specifications": {
+        "fabric": "recycled grid fleece",
+        "pockets": 3
+      },
+      "filterAttributes": {
+        "weightGrams": 430,
+        "waterproof": false,
+        "seasonality": "three-season",
+        "sizeRange": "XS-XXL"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 4
+        },
+        "climates": [
+          "cold",
+          "temperate"
+        ],
+        "terrains": [
+          "campground",
+          "trail",
+          "forest"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "medium"
+      }
+    },
+    {
+      "id": "KIT-0018",
+      "name": "Trailflame Stove",
+      "brand": "Ember",
+      "category": "cookware",
+      "activities": [
+        "camping",
+        "backpacking"
+      ],
+      "description": "A compact canister stove with reliable simmer control for quick backcountry meals.",
+      "price": 59.95,
+      "rating": 4.8,
+      "reviewCount": 341,
+      "image": {
+        "src": "/images/products/kit-0018.webp",
+        "alt": "Trailflame Stove by Ember"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 38,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "stove",
+        "canister",
+        "cooking"
+      ],
+      "specifications": {
+        "fuelType": "isobutane-propane",
+        "boilTimeMinutes": 3.5
+      },
+      "filterAttributes": {
+        "weightGrams": 95,
+        "waterproof": false,
+        "seasonality": "all-season"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 8
+        },
+        "climates": [
+          "dry",
+          "wet",
+          "cold",
+          "hot",
+          "temperate"
+        ],
+        "terrains": [
+          "campground",
+          "trail",
+          "mountain",
+          "forest",
+          "desert"
+        ],
+        "groupSizes": [
+          1,
+          2
+        ],
+        "packWeightPriority": "high"
+      }
+    },
+    {
+      "id": "KIT-0019",
+      "name": "Camp Chef Two Burner",
+      "brand": "Ember",
+      "category": "cookware",
+      "activities": [
+        "camping"
+      ],
+      "description": "A stable two-burner propane stove sized for preparing full meals at base camp.",
+      "price": 149.0,
+      "rating": 4.7,
+      "reviewCount": 178,
+      "image": {
+        "src": "/images/products/kit-0019.webp",
+        "alt": "Camp Chef Two Burner by Ember"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 12,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "stove",
+        "two-burner",
+        "camp-kitchen"
+      ],
+      "specifications": {
+        "fuelType": "propane",
+        "outputBtuPerBurner": 12000
+      },
+      "filterAttributes": {
+        "weightGrams": 5400,
+        "waterproof": false,
+        "seasonality": "all-season"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 7
+        },
+        "climates": [
+          "dry",
+          "wet",
+          "cold",
+          "hot",
+          "temperate"
+        ],
+        "terrains": [
+          "campground"
+        ],
+        "groupSizes": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0020",
+      "name": "Solo Titanium Cookset",
+      "brand": "Skytrail",
+      "category": "cookware",
+      "activities": [
+        "backpacking"
+      ],
+      "description": "A nesting titanium pot and cup set designed for lightweight solo backcountry cooking.",
+      "price": 74.0,
+      "rating": 4.5,
+      "reviewCount": 76,
+      "image": {
+        "src": "/images/products/kit-0020.webp",
+        "alt": "Solo Titanium Cookset by Skytrail"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 17,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "cookset",
+        "titanium",
+        "solo"
+      ],
+      "specifications": {
+        "potCapacityLiters": 0.9,
+        "pieces": 2
+      },
+      "filterAttributes": {
+        "weightGrams": 190,
+        "waterproof": false,
+        "seasonality": "all-season"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 8
+        },
+        "climates": [
+          "dry",
+          "wet",
+          "cold",
+          "hot",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "mountain",
+          "forest",
+          "desert"
+        ],
+        "groupSizes": [
+          1
+        ],
+        "packWeightPriority": "high"
+      }
+    },
+    {
+      "id": "KIT-0021",
+      "name": "Beacon 450 Headlamp",
+      "brand": "Luma",
+      "category": "lighting",
+      "activities": [
+        "camping",
+        "hiking",
+        "backpacking"
+      ],
+      "description": "A rechargeable headlamp with flood and spot modes for camp tasks and night hiking.",
+      "price": 49.95,
+      "rating": 4.7,
+      "reviewCount": 402,
+      "image": {
+        "src": "/images/products/kit-0021.webp",
+        "alt": "Beacon 450 Headlamp by Luma"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 41,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "headlamp",
+        "rechargeable",
+        "night-hiking"
+      ],
+      "specifications": {
+        "maxLumens": 450,
+        "runtimeHours": 40
+      },
+      "filterAttributes": {
+        "weightGrams": 88,
+        "waterproof": true,
+        "seasonality": "all-season"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 8
+        },
+        "climates": [
+          "dry",
+          "wet",
+          "cold",
+          "hot",
+          "temperate"
+        ],
+        "terrains": [
+          "campground",
+          "trail",
+          "mountain",
+          "forest",
+          "desert"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "high"
+      }
+    },
+    {
+      "id": "KIT-0022",
+      "name": "Glowcamp Lantern",
+      "brand": "Luma",
+      "category": "lighting",
+      "activities": [
+        "camping"
+      ],
+      "description": "A diffused rechargeable lantern with a warm mode for tables, tents, and group campsites.",
+      "price": 44.0,
+      "rating": 4.4,
+      "reviewCount": 119,
+      "image": {
+        "src": "/images/products/kit-0022.webp",
+        "alt": "Glowcamp Lantern by Luma"
+      },
+      "availability": {
+        "status": "out-of-stock",
+        "quantity": 0,
+        "addToCartEligible": false
+      },
+      "tags": [
+        "lantern",
+        "rechargeable",
+        "camp-light"
+      ],
+      "specifications": {
+        "maxLumens": 300,
+        "runtimeHours": 60
+      },
+      "filterAttributes": {
+        "weightGrams": 310,
+        "waterproof": true,
+        "seasonality": "all-season"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 7
+        },
+        "climates": [
+          "dry",
+          "wet",
+          "cold",
+          "hot",
+          "temperate"
+        ],
+        "terrains": [
+          "campground"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0023",
+      "name": "Flow 2L Reservoir",
+      "brand": "Clearwater",
+      "category": "hydration",
+      "activities": [
+        "hiking",
+        "backpacking"
+      ],
+      "description": "A wide-opening hydration reservoir with a high-flow bite valve and easy-clean tubing.",
+      "price": 39.95,
+      "rating": 4.3,
+      "reviewCount": 187,
+      "image": {
+        "src": "/images/products/kit-0023.webp",
+        "alt": "Flow 2L Reservoir by Clearwater"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 29,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "hydration",
+        "reservoir",
+        "water"
+      ],
+      "specifications": {
+        "material": "BPA-free TPU",
+        "opening": "slide-seal"
+      },
+      "filterAttributes": {
+        "weightGrams": 170,
+        "waterproof": false,
+        "seasonality": "all-season",
+        "capacityLiters": 2
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 4
+        },
+        "climates": [
+          "dry",
+          "wet",
+          "hot",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "mountain",
+          "forest",
+          "desert"
+        ],
+        "groupSizes": [
+          1
+        ],
+        "packWeightPriority": "high"
+      }
+    },
+    {
+      "id": "KIT-0024",
+      "name": "Canyon 1L Bottle",
+      "brand": "Clearwater",
+      "category": "hydration",
+      "activities": [
+        "camping",
+        "hiking",
+        "backpacking"
+      ],
+      "description": "A durable insulated bottle that keeps water cool through long days outdoors.",
+      "price": 34.0,
+      "rating": 4.6,
+      "reviewCount": 244,
+      "image": {
+        "src": "/images/products/kit-0024.webp",
+        "alt": "Canyon 1L Bottle by Clearwater"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 35,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "water bottle",
+        "insulated",
+        "hydration"
+      ],
+      "specifications": {
+        "material": "stainless steel",
+        "insulatedHours": 24
+      },
+      "filterAttributes": {
+        "weightGrams": 390,
+        "waterproof": false,
+        "seasonality": "all-season",
+        "capacityLiters": 1
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 8
+        },
+        "climates": [
+          "dry",
+          "wet",
+          "cold",
+          "hot",
+          "temperate"
+        ],
+        "terrains": [
+          "campground",
+          "trail",
+          "mountain",
+          "forest",
+          "desert"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "medium"
+      }
+    },
+    {
+      "id": "KIT-0025",
+      "name": "Trailpure Microfilter",
+      "brand": "Clearwater",
+      "category": "hydration",
+      "activities": [
+        "hiking",
+        "backpacking",
+        "camping"
+      ],
+      "description": "A compact squeeze water filter for treating freshwater on trails and at camp.",
+      "price": 49.0,
+      "rating": 4.8,
+      "reviewCount": 376,
+      "image": {
+        "src": "/images/products/kit-0025.webp",
+        "alt": "Trailpure Microfilter by Clearwater"
+      },
+      "availability": {
+        "status": "low-stock",
+        "quantity": 5,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "water filter",
+        "squeeze",
+        "backcountry"
+      ],
+      "specifications": {
+        "filterPoreMicrons": 0.1,
+        "ratedLiters": 2000
+      },
+      "filterAttributes": {
+        "weightGrams": 85,
+        "waterproof": false,
+        "seasonality": "all-season"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 8
+        },
+        "climates": [
+          "dry",
+          "wet",
+          "hot",
+          "temperate"
+        ],
+        "terrains": [
+          "campground",
+          "trail",
+          "mountain",
+          "forest"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "high"
+      }
+    },
+    {
+      "id": "KIT-0026",
+      "name": "Pathfinder Compass",
+      "brand": "TrueNorth",
+      "category": "navigation",
+      "activities": [
+        "hiking",
+        "backpacking"
+      ],
+      "description": "A baseplate compass with adjustable declination and luminous markings for route finding.",
+      "price": 42.5,
+      "rating": 4.6,
+      "reviewCount": 98,
+      "image": {
+        "src": "/images/products/kit-0026.webp",
+        "alt": "Pathfinder Compass by TrueNorth"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 24,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "compass",
+        "navigation",
+        "map"
+      ],
+      "specifications": {
+        "declination": "adjustable",
+        "scale": "metric and imperial"
+      },
+      "filterAttributes": {
+        "weightGrams": 54,
+        "waterproof": true,
+        "seasonality": "all-season"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 8
+        },
+        "climates": [
+          "dry",
+          "wet",
+          "cold",
+          "hot",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "mountain",
+          "forest",
+          "desert"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "high"
+      }
+    },
+    {
+      "id": "KIT-0027",
+      "name": "Trek GPS Mini",
+      "brand": "TrueNorth",
+      "category": "navigation",
+      "activities": [
+        "hiking",
+        "backpacking"
+      ],
+      "description": "A compact handheld GPS with offline maps and weather-resistant controls for remote routes.",
+      "price": 299.95,
+      "rating": 4.5,
+      "reviewCount": 83,
+      "image": {
+        "src": "/images/products/kit-0027.webp",
+        "alt": "Trek GPS Mini by TrueNorth"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 8,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "gps",
+        "navigation",
+        "offline-maps"
+      ],
+      "specifications": {
+        "batteryHours": 28,
+        "satelliteNetworks": "GPS, Galileo, GLONASS"
+      },
+      "filterAttributes": {
+        "weightGrams": 210,
+        "waterproof": true,
+        "seasonality": "all-season"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 8
+        },
+        "climates": [
+          "dry",
+          "wet",
+          "cold",
+          "hot",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "mountain",
+          "forest",
+          "desert"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "medium"
+      }
+    },
+    {
+      "id": "KIT-0028",
+      "name": "Readytrail First Aid Kit",
+      "brand": "Safepath",
+      "category": "safety",
+      "activities": [
+        "camping",
+        "hiking",
+        "backpacking"
+      ],
+      "description": "A compact organized first-aid kit stocked for common injuries on short outdoor trips.",
+      "price": 36.0,
+      "rating": 4.7,
+      "reviewCount": 289,
+      "image": {
+        "src": "/images/products/kit-0028.webp",
+        "alt": "Readytrail First Aid Kit by Safepath"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 44,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "first aid",
+        "safety",
+        "emergency"
+      ],
+      "specifications": {
+        "supplyPieces": 74,
+        "recommendedPeople": 2
+      },
+      "filterAttributes": {
+        "weightGrams": 310,
+        "waterproof": true,
+        "seasonality": "all-season"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 4
+        },
+        "climates": [
+          "dry",
+          "wet",
+          "cold",
+          "hot",
+          "temperate"
+        ],
+        "terrains": [
+          "campground",
+          "trail",
+          "mountain",
+          "forest",
+          "desert"
+        ],
+        "groupSizes": [
+          1,
+          2
+        ],
+        "packWeightPriority": "high"
+      }
+    },
+    {
+      "id": "KIT-0029",
+      "name": "Stormguard Emergency Bivy",
+      "brand": "Safepath",
+      "category": "safety",
+      "activities": [
+        "hiking",
+        "backpacking"
+      ],
+      "description": "A reflective waterproof emergency shelter that packs small for unexpected nights outside.",
+      "price": 29.95,
+      "rating": 4.4,
+      "reviewCount": 137,
+      "image": {
+        "src": "/images/products/kit-0029.webp",
+        "alt": "Stormguard Emergency Bivy by Safepath"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 31,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "emergency",
+        "bivy",
+        "shelter"
+      ],
+      "specifications": {
+        "material": "reflective polyethylene",
+        "reusable": true
+      },
+      "filterAttributes": {
+        "weightGrams": 125,
+        "waterproof": true,
+        "seasonality": "all-season",
+        "personCapacity": 1
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 8
+        },
+        "climates": [
+          "wet",
+          "cold",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "mountain",
+          "forest",
+          "desert"
+        ],
+        "groupSizes": [
+          1
+        ],
+        "packWeightPriority": "high"
+      }
+    },
+    {
+      "id": "KIT-0030",
+      "name": "Switchback Cork Poles",
+      "brand": "Ridgeline",
+      "category": "trekking-poles",
+      "activities": [
+        "hiking",
+        "backpacking"
+      ],
+      "description": "Adjustable aluminum trekking poles with cork grips for stability on uneven terrain.",
+      "price": 89.95,
+      "rating": 4.6,
+      "reviewCount": 221,
+      "image": {
+        "src": "/images/products/kit-0030.webp",
+        "alt": "Switchback Cork Poles by Ridgeline"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 21,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "trekking poles",
+        "adjustable",
+        "cork-grip"
+      ],
+      "specifications": {
+        "shaft": "7075 aluminum",
+        "lengthRangeCm": "100-135"
+      },
+      "filterAttributes": {
+        "weightGrams": 520,
+        "waterproof": false,
+        "seasonality": "all-season"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 8
+        },
+        "climates": [
+          "dry",
+          "wet",
+          "cold",
+          "hot",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "mountain",
+          "forest",
+          "desert"
+        ],
+        "groupSizes": [
+          1,
+          2
+        ],
+        "packWeightPriority": "medium"
+      }
+    },
+    {
+      "id": "KIT-0031",
+      "name": "Featherstep Carbon Poles",
+      "brand": "Skytrail",
+      "category": "trekking-poles",
+      "activities": [
+        "hiking",
+        "backpacking"
+      ],
+      "description": "Lightweight carbon trekking poles for efficient climbing and confident technical descents.",
+      "price": 159.0,
+      "rating": 4.7,
+      "reviewCount": 103,
+      "image": {
+        "src": "/images/products/kit-0031.webp",
+        "alt": "Featherstep Carbon Poles by Skytrail"
+      },
+      "availability": {
+        "status": "low-stock",
+        "quantity": 2,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "trekking poles",
+        "carbon",
+        "lightweight"
+      ],
+      "specifications": {
+        "shaft": "carbon fiber",
+        "lengthRangeCm": "105-135"
+      },
+      "filterAttributes": {
+        "weightGrams": 360,
+        "waterproof": false,
+        "seasonality": "three-season"
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 8
+        },
+        "climates": [
+          "dry",
+          "wet",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "mountain",
+          "forest"
+        ],
+        "groupSizes": [
+          1,
+          2
+        ],
+        "packWeightPriority": "high"
+      }
+    },
+    {
+      "id": "KIT-0032",
+      "name": "Timberline All-Mountain Board",
+      "brand": "Snowcrest",
+      "category": "snowboards",
+      "activities": [
+        "snowboarding"
+      ],
+      "description": "A stable directional twin snowboard that builds confidence across groomers and variable resort snow.",
+      "price": 449.0,
+      "rating": 4.7,
+      "reviewCount": 86,
+      "image": {
+        "src": "/images/products/kit-0032.webp",
+        "alt": "Timberline All-Mountain Board by Snowcrest"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 10,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "snowboard",
+        "all-mountain",
+        "directional-twin"
+      ],
+      "specifications": {
+        "profile": "rocker-camber-rocker",
+        "waistWidthMm": 252
+      },
+      "filterAttributes": {
+        "weightGrams": 3100,
+        "waterproof": true,
+        "seasonality": "winter",
+        "snow": {
+          "skillLevel": "intermediate",
+          "lengthCm": 158,
+          "terrainPreference": "all-mountain"
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 3
+        },
+        "climates": [
+          "cold"
+        ],
+        "terrains": [
+          "mountain"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0033",
+      "name": "Driftline Park Board",
+      "brand": "Snowcrest",
+      "category": "snowboards",
+      "activities": [
+        "snowboarding"
+      ],
+      "description": "A playful true-twin snowboard with forgiving flex for progressing riders and terrain-park laps.",
+      "price": 389.95,
+      "rating": 4.5,
+      "reviewCount": 61,
+      "image": {
+        "src": "/images/products/kit-0033.webp",
+        "alt": "Driftline Park Board by Snowcrest"
+      },
+      "availability": {
+        "status": "low-stock",
+        "quantity": 3,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "snowboard",
+        "park",
+        "true-twin"
+      ],
+      "specifications": {
+        "profile": "hybrid camber",
+        "flex": "soft-medium"
+      },
+      "filterAttributes": {
+        "weightGrams": 2880,
+        "waterproof": true,
+        "seasonality": "winter",
+        "snow": {
+          "skillLevel": "beginner",
+          "lengthCm": 152,
+          "terrainPreference": "park"
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 3
+        },
+        "climates": [
+          "cold"
+        ],
+        "terrains": [
+          "mountain"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "medium"
+      }
+    },
+    {
+      "id": "KIT-0034",
+      "name": "Ridge Lock Snowboard Boots",
+      "brand": "Snowcrest",
+      "category": "footwear",
+      "activities": [
+        "snowboarding"
+      ],
+      "description": "Warm medium-flex snowboard boots with heat-moldable liners and quick dual-zone lacing.",
+      "price": 279.0,
+      "rating": 4.6,
+      "reviewCount": 104,
+      "image": {
+        "src": "/images/products/kit-0034.webp",
+        "alt": "Ridge Lock Snowboard Boots by Snowcrest"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 14,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "snowboard boots",
+        "warm",
+        "medium-flex"
+      ],
+      "specifications": {
+        "closure": "dual-zone speed lace",
+        "flex": "medium"
+      },
+      "filterAttributes": {
+        "weightGrams": 2100,
+        "waterproof": true,
+        "seasonality": "winter",
+        "sizeRange": "US 6-13",
+        "snow": {
+          "skillLevel": "intermediate",
+          "warmth": "high"
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 5
+        },
+        "climates": [
+          "cold"
+        ],
+        "terrains": [
+          "mountain"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0035",
+      "name": "Piste 78 Carving Skis",
+      "brand": "Alpine Arc",
+      "category": "skis",
+      "activities": [
+        "skiing"
+      ],
+      "description": "Responsive frontside skis with easy turn initiation for confident days on maintained resort runs.",
+      "price": 599.0,
+      "rating": 4.8,
+      "reviewCount": 73,
+      "image": {
+        "src": "/images/products/kit-0035.webp",
+        "alt": "Piste 78 Carving Skis by Alpine Arc"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 8,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "skis",
+        "carving",
+        "groomed"
+      ],
+      "specifications": {
+        "turnRadiusM": 14,
+        "waistWidthMm": 78
+      },
+      "filterAttributes": {
+        "weightGrams": 3620,
+        "waterproof": true,
+        "seasonality": "winter",
+        "snow": {
+          "skillLevel": "intermediate",
+          "lengthCm": 170,
+          "terrainPreference": "groomed"
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 4
+        },
+        "climates": [
+          "cold"
+        ],
+        "terrains": [
+          "mountain"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0036",
+      "name": "Powderline 104 Skis",
+      "brand": "Alpine Arc",
+      "category": "skis",
+      "activities": [
+        "skiing"
+      ],
+      "description": "Float-focused freeride skis with a stable platform for advanced riders exploring soft snow.",
+      "price": 749.95,
+      "rating": 4.7,
+      "reviewCount": 48,
+      "image": {
+        "src": "/images/products/kit-0036.webp",
+        "alt": "Powderline 104 Skis by Alpine Arc"
+      },
+      "availability": {
+        "status": "out-of-stock",
+        "quantity": 0,
+        "addToCartEligible": false
+      },
+      "tags": [
+        "skis",
+        "powder",
+        "freeride"
+      ],
+      "specifications": {
+        "turnRadiusM": 19,
+        "waistWidthMm": 104
+      },
+      "filterAttributes": {
+        "weightGrams": 4100,
+        "waterproof": true,
+        "seasonality": "winter",
+        "snow": {
+          "skillLevel": "advanced",
+          "lengthCm": 184,
+          "terrainPreference": "powder"
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 5
+        },
+        "climates": [
+          "cold"
+        ],
+        "terrains": [
+          "mountain"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0037",
+      "name": "Summit Buckle Ski Boots",
+      "brand": "Alpine Arc",
+      "category": "footwear",
+      "activities": [
+        "skiing"
+      ],
+      "description": "Insulated four-buckle alpine ski boots offering a supportive fit for all-day resort skiing.",
+      "price": 349.0,
+      "rating": 4.4,
+      "reviewCount": 92,
+      "image": {
+        "src": "/images/products/kit-0037.webp",
+        "alt": "Summit Buckle Ski Boots by Alpine Arc"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 12,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "ski boots",
+        "alpine",
+        "insulated"
+      ],
+      "specifications": {
+        "flexIndex": 100,
+        "closure": "four buckle"
+      },
+      "filterAttributes": {
+        "weightGrams": 3980,
+        "waterproof": true,
+        "seasonality": "winter",
+        "sizeRange": "Mondo 24-30.5",
+        "snow": {
+          "skillLevel": "intermediate",
+          "warmth": "high"
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 5
+        },
+        "climates": [
+          "cold"
+        ],
+        "terrains": [
+          "mountain"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0038",
+      "name": "Switchback 29 Trail Bike",
+      "brand": "Dirtline",
+      "category": "bikes",
+      "activities": [
+        "mountain-biking"
+      ],
+      "description": "A balanced full-suspension trail bike for technical climbs, flowing singletrack, and controlled descents.",
+      "price": 2899.0,
+      "rating": 4.8,
+      "reviewCount": 57,
+      "image": {
+        "src": "/images/products/kit-0038.webp",
+        "alt": "Switchback 29 Trail Bike by Dirtline"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 6,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "mountain bike",
+        "trail",
+        "full-suspension"
+      ],
+      "specifications": {
+        "frameMaterial": "aluminum",
+        "drivetrain": "1x12"
+      },
+      "filterAttributes": {
+        "weightGrams": 14800,
+        "waterproof": false,
+        "seasonality": "all-season",
+        "mountainBiking": {
+          "discipline": "trail",
+          "wheelSizeInches": 29,
+          "frameSizeRange": "S-XL",
+          "suspensionType": "full-suspension",
+          "suspensionTravelMm": 140
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 5
+        },
+        "climates": [
+          "dry",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "mountain",
+          "forest"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0039",
+      "name": "Aspen 29 XC Hardtail",
+      "brand": "Dirtline",
+      "category": "bikes",
+      "activities": [
+        "mountain-biking"
+      ],
+      "description": "An efficient lightweight hardtail for newer riders, rolling singletrack, and cross-country mileage.",
+      "price": 1399.0,
+      "rating": 4.6,
+      "reviewCount": 81,
+      "image": {
+        "src": "/images/products/kit-0039.webp",
+        "alt": "Aspen 29 XC Hardtail by Dirtline"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 9,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "mountain bike",
+        "cross-country",
+        "hardtail"
+      ],
+      "specifications": {
+        "frameMaterial": "aluminum",
+        "drivetrain": "1x11"
+      },
+      "filterAttributes": {
+        "weightGrams": 12600,
+        "waterproof": false,
+        "seasonality": "all-season",
+        "mountainBiking": {
+          "discipline": "cross-country",
+          "wheelSizeInches": 29,
+          "frameSizeRange": "XS-XL",
+          "suspensionType": "hardtail",
+          "suspensionTravelMm": 100
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 4
+        },
+        "climates": [
+          "dry",
+          "hot",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "forest"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0040",
+      "name": "Gravity 27.5 Enduro Bike",
+      "brand": "Dirtline",
+      "category": "bikes",
+      "activities": [
+        "mountain-biking"
+      ],
+      "description": "A long-travel enduro bike tuned for steep technical descents while remaining capable on transfers.",
+      "price": 3799.95,
+      "rating": 4.7,
+      "reviewCount": 39,
+      "image": {
+        "src": "/images/products/kit-0040.webp",
+        "alt": "Gravity 27.5 Enduro Bike by Dirtline"
+      },
+      "availability": {
+        "status": "low-stock",
+        "quantity": 2,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "mountain bike",
+        "enduro",
+        "long-travel"
+      ],
+      "specifications": {
+        "frameMaterial": "carbon fiber",
+        "drivetrain": "1x12"
+      },
+      "filterAttributes": {
+        "weightGrams": 15700,
+        "waterproof": false,
+        "seasonality": "all-season",
+        "mountainBiking": {
+          "discipline": "enduro",
+          "wheelSizeInches": 27.5,
+          "frameSizeRange": "S-L",
+          "suspensionType": "full-suspension",
+          "suspensionTravelMm": 170
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 5
+        },
+        "climates": [
+          "dry",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "mountain",
+          "forest"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    }
+  ]
+}
