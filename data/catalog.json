@@ -2000,6 +2000,593 @@
         ],
         "packWeightPriority": "high"
       }
+    },
+    {
+      "id": "KIT-0032",
+      "name": "Timberline All-Mountain Board",
+      "brand": "Snowcrest",
+      "category": "snowboards",
+      "activities": [
+        "snowboarding"
+      ],
+      "description": "A stable directional twin snowboard that builds confidence across groomers and variable resort snow.",
+      "price": 449.0,
+      "rating": 4.7,
+      "reviewCount": 86,
+      "image": {
+        "src": "/images/products/kit-0032.webp",
+        "alt": "Timberline All-Mountain Board by Snowcrest"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 10,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "snowboard",
+        "all-mountain",
+        "directional-twin"
+      ],
+      "specifications": {
+        "profile": "rocker-camber-rocker",
+        "waistWidthMm": 252
+      },
+      "filterAttributes": {
+        "weightGrams": 3100,
+        "waterproof": true,
+        "seasonality": "winter",
+        "snow": {
+          "skillLevel": "intermediate",
+          "lengthCm": 158,
+          "terrainPreference": "all-mountain"
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 3
+        },
+        "climates": [
+          "cold"
+        ],
+        "terrains": [
+          "mountain"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0033",
+      "name": "Driftline Park Board",
+      "brand": "Snowcrest",
+      "category": "snowboards",
+      "activities": [
+        "snowboarding"
+      ],
+      "description": "A playful true-twin snowboard with forgiving flex for progressing riders and terrain-park laps.",
+      "price": 389.95,
+      "rating": 4.5,
+      "reviewCount": 61,
+      "image": {
+        "src": "/images/products/kit-0033.webp",
+        "alt": "Driftline Park Board by Snowcrest"
+      },
+      "availability": {
+        "status": "low-stock",
+        "quantity": 3,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "snowboard",
+        "park",
+        "true-twin"
+      ],
+      "specifications": {
+        "profile": "hybrid camber",
+        "flex": "soft-medium"
+      },
+      "filterAttributes": {
+        "weightGrams": 2880,
+        "waterproof": true,
+        "seasonality": "winter",
+        "snow": {
+          "skillLevel": "beginner",
+          "lengthCm": 152,
+          "terrainPreference": "park"
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 3
+        },
+        "climates": [
+          "cold"
+        ],
+        "terrains": [
+          "mountain"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "medium"
+      }
+    },
+    {
+      "id": "KIT-0034",
+      "name": "Ridge Lock Snowboard Boots",
+      "brand": "Snowcrest",
+      "category": "footwear",
+      "activities": [
+        "snowboarding"
+      ],
+      "description": "Warm medium-flex snowboard boots with heat-moldable liners and quick dual-zone lacing.",
+      "price": 279.0,
+      "rating": 4.6,
+      "reviewCount": 104,
+      "image": {
+        "src": "/images/products/kit-0034.webp",
+        "alt": "Ridge Lock Snowboard Boots by Snowcrest"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 14,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "snowboard boots",
+        "warm",
+        "medium-flex"
+      ],
+      "specifications": {
+        "closure": "dual-zone speed lace",
+        "flex": "medium"
+      },
+      "filterAttributes": {
+        "weightGrams": 2100,
+        "waterproof": true,
+        "seasonality": "winter",
+        "sizeRange": "US 6-13",
+        "snow": {
+          "skillLevel": "intermediate",
+          "warmth": "high"
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 5
+        },
+        "climates": [
+          "cold"
+        ],
+        "terrains": [
+          "mountain"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0035",
+      "name": "Piste 78 Carving Skis",
+      "brand": "Alpine Arc",
+      "category": "skis",
+      "activities": [
+        "skiing"
+      ],
+      "description": "Responsive frontside skis with easy turn initiation for confident days on maintained resort runs.",
+      "price": 599.0,
+      "rating": 4.8,
+      "reviewCount": 73,
+      "image": {
+        "src": "/images/products/kit-0035.webp",
+        "alt": "Piste 78 Carving Skis by Alpine Arc"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 8,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "skis",
+        "carving",
+        "groomed"
+      ],
+      "specifications": {
+        "turnRadiusM": 14,
+        "waistWidthMm": 78
+      },
+      "filterAttributes": {
+        "weightGrams": 3620,
+        "waterproof": true,
+        "seasonality": "winter",
+        "snow": {
+          "skillLevel": "intermediate",
+          "lengthCm": 170,
+          "terrainPreference": "groomed"
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 4
+        },
+        "climates": [
+          "cold"
+        ],
+        "terrains": [
+          "mountain"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0036",
+      "name": "Powderline 104 Skis",
+      "brand": "Alpine Arc",
+      "category": "skis",
+      "activities": [
+        "skiing"
+      ],
+      "description": "Float-focused freeride skis with a stable platform for advanced riders exploring soft snow.",
+      "price": 749.95,
+      "rating": 4.7,
+      "reviewCount": 48,
+      "image": {
+        "src": "/images/products/kit-0036.webp",
+        "alt": "Powderline 104 Skis by Alpine Arc"
+      },
+      "availability": {
+        "status": "out-of-stock",
+        "quantity": 0,
+        "addToCartEligible": false
+      },
+      "tags": [
+        "skis",
+        "powder",
+        "freeride"
+      ],
+      "specifications": {
+        "turnRadiusM": 19,
+        "waistWidthMm": 104
+      },
+      "filterAttributes": {
+        "weightGrams": 4100,
+        "waterproof": true,
+        "seasonality": "winter",
+        "snow": {
+          "skillLevel": "advanced",
+          "lengthCm": 184,
+          "terrainPreference": "powder"
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 5
+        },
+        "climates": [
+          "cold"
+        ],
+        "terrains": [
+          "mountain"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0037",
+      "name": "Summit Buckle Ski Boots",
+      "brand": "Alpine Arc",
+      "category": "footwear",
+      "activities": [
+        "skiing"
+      ],
+      "description": "Insulated four-buckle alpine ski boots offering a supportive fit for all-day resort skiing.",
+      "price": 349.0,
+      "rating": 4.4,
+      "reviewCount": 92,
+      "image": {
+        "src": "/images/products/kit-0037.webp",
+        "alt": "Summit Buckle Ski Boots by Alpine Arc"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 12,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "ski boots",
+        "alpine",
+        "insulated"
+      ],
+      "specifications": {
+        "flexIndex": 100,
+        "closure": "four buckle"
+      },
+      "filterAttributes": {
+        "weightGrams": 3980,
+        "waterproof": true,
+        "seasonality": "winter",
+        "sizeRange": "Mondo 24-30.5",
+        "snow": {
+          "skillLevel": "intermediate",
+          "warmth": "high"
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 5
+        },
+        "climates": [
+          "cold"
+        ],
+        "terrains": [
+          "mountain"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0038",
+      "name": "Switchback 29 Trail Bike",
+      "brand": "Dirtline",
+      "category": "bikes",
+      "activities": [
+        "mountain-biking"
+      ],
+      "description": "A balanced full-suspension trail bike for technical climbs, flowing singletrack, and controlled descents.",
+      "price": 2899.0,
+      "rating": 4.8,
+      "reviewCount": 57,
+      "image": {
+        "src": "/images/products/kit-0038.webp",
+        "alt": "Switchback 29 Trail Bike by Dirtline"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 6,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "mountain bike",
+        "trail",
+        "full-suspension"
+      ],
+      "specifications": {
+        "frameMaterial": "aluminum",
+        "drivetrain": "1x12"
+      },
+      "filterAttributes": {
+        "weightGrams": 14800,
+        "waterproof": false,
+        "seasonality": "all-season",
+        "mountainBiking": {
+          "discipline": "trail",
+          "wheelSizeInches": 29,
+          "frameSizeRange": "S-XL",
+          "suspensionType": "full-suspension",
+          "suspensionTravelMm": 140
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "intermediate",
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 5
+        },
+        "climates": [
+          "dry",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "mountain",
+          "forest"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0039",
+      "name": "Aspen 29 XC Hardtail",
+      "brand": "Dirtline",
+      "category": "bikes",
+      "activities": [
+        "mountain-biking"
+      ],
+      "description": "An efficient lightweight hardtail for newer riders, rolling singletrack, and cross-country mileage.",
+      "price": 1399.0,
+      "rating": 4.6,
+      "reviewCount": 81,
+      "image": {
+        "src": "/images/products/kit-0039.webp",
+        "alt": "Aspen 29 XC Hardtail by Dirtline"
+      },
+      "availability": {
+        "status": "in-stock",
+        "quantity": 9,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "mountain bike",
+        "cross-country",
+        "hardtail"
+      ],
+      "specifications": {
+        "frameMaterial": "aluminum",
+        "drivetrain": "1x11"
+      },
+      "filterAttributes": {
+        "weightGrams": 12600,
+        "waterproof": false,
+        "seasonality": "all-season",
+        "mountainBiking": {
+          "discipline": "cross-country",
+          "wheelSizeInches": 29,
+          "frameSizeRange": "XS-XL",
+          "suspensionType": "hardtail",
+          "suspensionTravelMm": 100
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "beginner",
+          "intermediate"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 4
+        },
+        "climates": [
+          "dry",
+          "hot",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "forest"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
+    },
+    {
+      "id": "KIT-0040",
+      "name": "Gravity 27.5 Enduro Bike",
+      "brand": "Dirtline",
+      "category": "bikes",
+      "activities": [
+        "mountain-biking"
+      ],
+      "description": "A long-travel enduro bike tuned for steep technical descents while remaining capable on transfers.",
+      "price": 3799.95,
+      "rating": 4.7,
+      "reviewCount": 39,
+      "image": {
+        "src": "/images/products/kit-0040.webp",
+        "alt": "Gravity 27.5 Enduro Bike by Dirtline"
+      },
+      "availability": {
+        "status": "low-stock",
+        "quantity": 2,
+        "addToCartEligible": true
+      },
+      "tags": [
+        "mountain bike",
+        "enduro",
+        "long-travel"
+      ],
+      "specifications": {
+        "frameMaterial": "carbon fiber",
+        "drivetrain": "1x12"
+      },
+      "filterAttributes": {
+        "weightGrams": 15700,
+        "waterproof": false,
+        "seasonality": "all-season",
+        "mountainBiking": {
+          "discipline": "enduro",
+          "wheelSizeInches": 27.5,
+          "frameSizeRange": "S-L",
+          "suspensionType": "full-suspension",
+          "suspensionTravelMm": 170
+        }
+      },
+      "recommendationAttributes": {
+        "experienceLevels": [
+          "advanced"
+        ],
+        "tripDurationDays": {
+          "min": 1,
+          "max": 5
+        },
+        "climates": [
+          "dry",
+          "temperate"
+        ],
+        "terrains": [
+          "trail",
+          "mountain",
+          "forest"
+        ],
+        "groupSizes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "packWeightPriority": "low"
+      }
     }
   ]
 }

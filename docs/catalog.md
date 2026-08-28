@@ -4,6 +4,7 @@ The Kitted catalog is local prototype seed data. Prices, reviews, and inventory 
 
 ## Files and usage
 
+- `data/catalog.json` is the consumer-ready dataset. It contains 40 representative products spanning camping, hiking, backpacking, snowboarding, skiing, and mountain biking.
 - `data/catalog.json` is the consumer-ready dataset. It contains 31 representative products spanning camping, hiking, and backpacking.
 - `data/catalog.schema.json` is the JSON Schema (Draft 2020-12) contract and is the source of truth for field names, allowed taxonomy values, and basic constraints.
 - `scripts/validate-catalog.mjs` performs dataset-wide and cross-field checks that JSON Schema alone cannot express conveniently.
@@ -13,6 +14,11 @@ Consumers should load `products` from the catalog root. `schemaVersion` is an in
 
 ## Taxonomy
 
+Activities use only `camping`, `hiking`, `backpacking`, `snowboarding`, `skiing`, and `mountain-biking`. A product may support more than one activity. Camping, hiking, and backpacking remain the primary guided MVP activities. Snowboarding, skiing, and mountain biking are catalog-supported; their deeper guided journeys, questionnaires, and recommendation behavior are explicitly deferred.
+
+Categories use stable kebab-case values:
+
+`tents`, `sleeping-bags`, `sleeping-pads`, `backpacks`, `footwear`, `apparel`, `cookware`, `lighting`, `hydration`, `navigation`, `safety`, `trekking-poles`, `snowboards`, `skis`, and `bikes`. The three added equipment categories are the minimum needed for meaningful new-activity coverage; snow boots reuse `footwear`.
 Activities use only `camping`, `hiking`, and `backpacking`. A product may support more than one activity. Categories use stable kebab-case values:
 
 `tents`, `sleeping-bags`, `sleeping-pads`, `backpacks`, `footwear`, `apparel`, `cookware`, `lighting`, `hydration`, `navigation`, `safety`, and `trekking-poles`.
@@ -28,6 +34,8 @@ The common Sprint 1 filter inputs are:
 - top-level `activities`, `category`, `brand`, `rating`, and `availability.status`;
 - `filterAttributes.weightGrams`, `waterproof`, and `seasonality` on every product;
 - optional category-relevant `capacityLiters`, `personCapacity`, and `sizeRange`.
+- optional `filterAttributes.snow` values for snow skill level, equipment length, terrain preference, and warmth, populated only where relevant to a snow product;
+- optional `filterAttributes.mountainBiking` values for discipline, wheel size, frame-size range, suspension type, and suspension travel, populated on mountain bikes.
 
 Sort directly on numeric `price` or `rating`. The recommended/default ordering is the stable order in `products`; this avoids embedding a recommendation algorithm in the catalog task.
 
@@ -47,5 +55,8 @@ The validator exits nonzero and lists record paths when it finds:
 - missing/invalid search fields, numeric price/rating/review data, image metadata, specifications, or filter and recommendation attributes;
 - inconsistent availability, quantity, and add-to-cart eligibility;
 - missing activity coverage or a catalog without both low-stock and out-of-stock examples.
+- missing or invalid snow/mountain-bike attributes, including attributes attached to an unrelated activity.
+
+The checked-in sample currently includes meaningful coverage for all six activities, all 15 categories, multiple stock states, valid sortable numbers, category- and activity-specific filters where applicable, and complete product-detail content.
 
 The checked-in sample currently includes all three activities, all 12 categories, multiple stock states, valid sortable numbers, category-specific filters where applicable, and complete product-detail content.
