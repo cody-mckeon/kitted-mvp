@@ -2,9 +2,24 @@
   "name": "kitted-mvp",
   "version": "0.1.0",
   "private": true,
-  "description": "Local prototype catalog data for Kitted",
+  "description": "Kitted outdoor-commerce prototype",
   "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
     "validate:catalog": "node scripts/validate-catalog.mjs",
-    "test": "npm run validate:catalog"
+    "test": "node --test tests/*.test.mjs && npm run validate:catalog"
+  },
+  "dependencies": {
+    "next": "15.5.2",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.8.0"
   }
 }

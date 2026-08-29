@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Franklin:ital,wght@0,700;1,700&display=swap');
+
+:root { --ink:#17251d; --cream:#f4f0e7; --paper:#fcfaf5; --orange:#e65f35; --line:rgba(23,37,29,.16); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; color:var(--ink); background:var(--paper); font-family:"DM Sans",sans-serif; }
+a { color:inherit; }
+.site-header { height:76px; display:flex; align-items:center; justify-content:space-between; padding:0 max(5vw,24px); border-bottom:1px solid var(--line); background:var(--paper); }
+.wordmark { font-family:"Libre Franklin",sans-serif; font-weight:700; letter-spacing:.18em; text-decoration:none; font-size:1.2rem; }
+.header-note { font-size:.78rem; text-transform:uppercase; letter-spacing:.12em; }
+.hero { min-height:560px; padding:88px max(7vw,28px); display:flex; flex-direction:column; align-items:flex-start; justify-content:center; position:relative; overflow:hidden; background:var(--ink); color:#fff; }
+.hero::after { content:""; position:absolute; width:48vw; height:48vw; right:-8vw; bottom:-24vw; border:1px solid rgba(255,255,255,.22); border-radius:50%; box-shadow:0 0 0 8vw rgba(255,255,255,.025),0 0 0 16vw rgba(255,255,255,.025); }
+.kicker { text-transform:uppercase; letter-spacing:.16em; font-size:.72rem; font-weight:700; margin:0 0 20px; }
+.hero h1 { font-family:"Libre Franklin",sans-serif; font-size:clamp(3.4rem,7.4vw,7.2rem); line-height:.86; letter-spacing:-.065em; margin:0; max-width:940px; position:relative; z-index:1; }
+.hero h1 em { color:#e7ad72; font-style:italic; }
+.hero-copy { max-width:510px; font-size:1.15rem; line-height:1.6; color:rgba(255,255,255,.78); margin:34px 0; position:relative; z-index:1; }
+.hero-cta,.button { display:inline-flex; gap:32px; align-items:center; background:var(--orange); color:white; border:0; padding:16px 22px; font:600 .9rem inherit; text-decoration:none; cursor:pointer; }
+.activity-section,.products-section { padding:90px max(5vw,24px) 110px; }
+.section-heading { display:flex; justify-content:space-between; align-items:end; gap:40px; margin-bottom:44px; }
+.section-heading h2,.results-heading h2 { font-family:"Libre Franklin",sans-serif; font-size:clamp(2rem,4vw,3.7rem); line-height:1; letter-spacing:-.05em; margin:0; }
+.section-heading>p { max-width:380px; line-height:1.6; color:#526057; }
+.activity-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.activity-card { min-height:390px; position:relative; overflow:hidden; display:flex; align-items:flex-end; padding:28px; text-decoration:none; color:white; isolation:isolate; }
+.activity-card::before { content:""; position:absolute; inset:0; background:linear-gradient(0deg,rgba(8,20,13,.78),transparent 70%); z-index:-1; }
+.activity-card.pine { background:#375c47; }.activity-card.clay { background:#9c6249; }.activity-card.gold { background:#9d7e3f; }.activity-card.ice { background:#607781; }.activity-card.sky { background:#3c6070; }.activity-card.moss { background:#5f6844; }
+.activity-art { position:absolute; inset:0; z-index:-2; opacity:.75; }
+.activity-art i { position:absolute; display:block; bottom:-8%; left:-15%; width:78%; aspect-ratio:1; border-radius:50% 50% 0 0; background:rgba(255,255,255,.13); transform:rotate(25deg); }
+.activity-art i:nth-child(2){ left:35%; bottom:15%; width:60%; background:rgba(0,0,0,.12); }.activity-art i:nth-child(3){ left:62%; bottom:43%; width:32%; background:rgba(255,255,255,.1); }
+.activity-copy { width:100%; display:flex; flex-direction:column; }.activity-copy small { text-transform:uppercase; letter-spacing:.12em; opacity:.8; }.activity-copy strong { font:700 2rem "Libre Franklin",sans-serif; margin:8px 0 20px; }.activity-copy>span:last-child { border-top:1px solid rgba(255,255,255,.4); padding-top:14px; display:flex; justify-content:space-between; }
+.activity-card { transition:transform .2s,filter .2s; }.activity-card:hover { transform:translateY(-4px); filter:brightness(1.08); }
+.listing-page { min-height:calc(100vh - 76px); }.breadcrumbs { padding:22px max(5vw,24px); display:flex; gap:10px; font-size:.85rem; color:#647067; }.listing-hero { padding:60px max(5vw,24px); color:white; background:#375c47; }.listing-hero.clay{background:#9c6249}.listing-hero.gold{background:#9d7e3f}.listing-hero.ice{background:#607781}.listing-hero.sky{background:#3c6070}.listing-hero.moss{background:#5f6844}.listing-hero h1 { font:700 clamp(3rem,7vw,6rem)/.95 "Libre Franklin"; letter-spacing:-.05em; margin:0 0 20px; }.listing-hero>p:last-child { max-width:540px; line-height:1.5; opacity:.86; }
+.results-heading { display:flex; align-items:end; justify-content:space-between; border-bottom:1px solid var(--line); padding-bottom:24px; margin-bottom:32px; }.results-heading p{margin:0;color:#647067}.product-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:30px 16px; }.product-card{min-width:0}.product-image { aspect-ratio:4/3; background:var(--cream); display:grid; place-items:center; color:#788178; text-transform:uppercase; letter-spacing:.16em; font-size:.66rem; }.product-info>p { margin:16px 0 5px; color:#667268; text-transform:uppercase; font-size:.68rem; letter-spacing:.12em; }.product-info h3{font-size:1rem;margin:0 0 13px}.product-info>div { display:flex; justify-content:space-between; font-size:.88rem; }.product-info small{color:#758078}.product-info mark{display:inline-block;margin-top:12px;background:#f0d7cf;color:#75321f;padding:4px 8px;font-size:.7rem}
+.state-card { max-width:650px; margin:100px auto; padding:64px 28px; text-align:center; }.state-icon { margin:auto; display:grid; place-items:center; border:1px solid var(--line); width:58px;height:58px;border-radius:50%;font-size:1.5rem}.state-card h1,.state-card h2 { font:700 2.5rem "Libre Franklin";letter-spacing:-.04em;margin:24px 0 12px}.state-card p{color:#647067;line-height:1.6;max-width:480px;margin:0 auto 28px}.state-actions{display:flex;align-items:center;justify-content:center;gap:22px}.state-actions a{font-weight:600}
+.skeleton { background:linear-gradient(90deg,#eee9df 25%,#faf7f0 50%,#eee9df 75%);background-size:200% 100%;animation:pulse 1.5s infinite}.hero-skeleton{height:280px;margin:60px max(5vw,24px)}.skeleton-grid{padding:20px max(5vw,24px);display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card-skeleton{height:300px}@keyframes pulse{to{background-position:-200% 0}}
+footer { background:#101b15;color:white;display:flex;justify-content:space-between;align-items:center;padding:46px max(5vw,24px); }footer p{opacity:.6;font-size:.82rem}
+@media(max-width:900px){.activity-grid{grid-template-columns:repeat(2,1fr)}.product-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.site-header{height:64px}.header-note{display:none}.hero{min-height:570px;padding:70px 24px}.hero h1{font-size:3.75rem}.hero-copy{font-size:1rem}.activity-section,.products-section{padding:64px 20px 80px}.section-heading{display:block}.section-heading>p{margin-top:20px}.activity-grid{grid-template-columns:1fr}.activity-card{min-height:310px}.product-grid{grid-template-columns:repeat(2,1fr);gap:28px 10px}.results-heading{align-items:start;gap:12px}.results-heading h2{font-size:1.8rem}.listing-hero{padding:48px 24px}.product-info>div{display:block}.product-info>div span{display:block;margin-top:5px}footer{display:block}footer p{margin:14px 0 0}.skeleton-grid{grid-template-columns:1fr 1fr}.state-actions{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.activity-card{transition:none}.skeleton{animation:none}}
