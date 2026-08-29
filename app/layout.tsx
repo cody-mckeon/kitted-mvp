@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { GlobalNavigation } from "@/components/global-navigation";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -11,10 +11,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
-        <header className="site-header">
-          <Link className="wordmark" href="/" aria-label="Kitted home">KITTED</Link>
-          <span className="header-note">Gear for wherever you go</span>
-        </header>
+        <GlobalNavigation />
         {children}
         <footer><span className="wordmark">KITTED</span><p>Local gear discovery, built for the outdoors.</p></footer>
       </body>
