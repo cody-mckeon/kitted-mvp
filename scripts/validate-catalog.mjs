@@ -13,10 +13,6 @@ const allowedSnowTerrain = new Set(["all-mountain", "groomed", "park", "powder",
 const allowedWarmth = new Set(["uninsulated", "light", "medium", "high"]);
 const allowedBikeDisciplines = new Set(["cross-country", "trail", "enduro", "downhill"]);
 const allowedSuspensionTypes = new Set(["rigid", "hardtail", "full-suspension"]);
-const allowedActivities = new Set(["camping", "hiking", "backpacking"]);
-const allowedStatuses = new Set(["in-stock", "low-stock", "out-of-stock"]);
-const allowedCategories = new Set(["tents", "sleeping-bags", "sleeping-pads", "backpacks", "footwear", "apparel", "cookware", "lighting", "hydration", "navigation", "safety", "trekking-poles"]);
-const allowedSeasons = new Set(["all-season", "three-season", "summer", "winter"]);
 const required = ["id", "name", "brand", "category", "activities", "description", "price", "rating", "reviewCount", "image", "availability", "tags", "specifications", "filterAttributes", "recommendationAttributes"];
 
 if (catalog.schemaVersion !== 1) errors.push("schemaVersion must be 1");

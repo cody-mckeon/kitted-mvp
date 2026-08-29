@@ -17,7 +17,6 @@
   "$defs": {
     "nonEmptyString": { "type": "string", "minLength": 1 },
     "activity": { "enum": ["camping", "hiking", "backpacking", "snowboarding", "skiing", "mountain-biking"] },
-    "activity": { "enum": ["camping", "hiking", "backpacking"] },
     "product": {
       "type": "object",
       "additionalProperties": false,
@@ -27,7 +26,6 @@
         "name": { "$ref": "#/$defs/nonEmptyString" },
         "brand": { "$ref": "#/$defs/nonEmptyString" },
         "category": { "enum": ["tents", "sleeping-bags", "sleeping-pads", "backpacks", "footwear", "apparel", "cookware", "lighting", "hydration", "navigation", "safety", "trekking-poles", "snowboards", "skis", "bikes"] },
-        "category": { "enum": ["tents", "sleeping-bags", "sleeping-pads", "backpacks", "footwear", "apparel", "cookware", "lighting", "hydration", "navigation", "safety", "trekking-poles"] },
         "activities": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/activity" } },
         "description": { "type": "string", "minLength": 20 },
         "price": { "type": "number", "exclusiveMinimum": 0, "multipleOf": 0.01 },
@@ -68,7 +66,6 @@
                 "suspensionTravelMm": { "type": "integer", "minimum": 0, "maximum": 250 }
               }
             }
-            "sizeRange": { "$ref": "#/$defs/nonEmptyString" }
           }
         },
         "recommendationAttributes": {
