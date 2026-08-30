@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GlobalNavigation } from "@/components/global-navigation";
+import { CartProvider } from "@/components/cart-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -11,9 +12,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
-        <GlobalNavigation />
-        {children}
-        <footer><span className="wordmark">KITTED</span><p>Local gear discovery, built for the outdoors.</p></footer>
+        <CartProvider>
+          <GlobalNavigation />
+          {children}
+          <footer><span className="wordmark">KITTED</span><p>Local gear discovery, built for the outdoors.</p></footer>
+        </CartProvider>
       </body>
     </html>
   );
