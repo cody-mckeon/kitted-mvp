@@ -129,11 +129,6 @@ function compareCandidates(a: Product, b: Product, intent: TripIntent): number {
     || a.id.localeCompare(b.id);
 }
 
-/** Return next-best products using the recommendation's hard constraints and ranking. */
-export function getRecommendationAlternatives(recommendation: ProductRecommendation, intent: TripIntent, products: Product[] = catalog.products): Product[] {
-  return products
-    .filter((product) => product.id !== recommendation.product.id && satisfiesHardConstraints(product, recommendation.category, intent))
-    .sort((a, b) => compareCandidates(a, b, intent));
 function recommendationFor(product: Product, rule: CategoryRule, intent: TripIntent): ProductRecommendation {
   const softSignals = matchingSoftSignals(product, intent);
   const trace = { ruleId: rule.id, category: rule.category, matchedSignals: [`activity:${intent.activity}`, ...softSignals, `priority:${intent.shopper.purchasePriority}`], softScore: softSignals.length };
@@ -142,13 +137,18 @@ function recommendationFor(product: Product, rule: CategoryRule, intent: TripInt
 }
 
 /** Return the other valid products for a recommendation, in the same deterministic rank order. */
-export function getRecommendationAlternatives(intent: TripIntent, recommendation: ProductRecommendation, products: Product[] = catalog.products): ProductRecommendation[] {
+export function getRecommendationAlternatives(recommendation: ProductRecommendation, intent: TripIntent, products?: Product[]): Product[];
+export function getRecommendationAlternatives(intent: TripIntent, recommendation: ProductRecommendation, products?: Product[]): ProductRecommendation[];
+export function getRecommendationAlternatives(intentOrRecommendation: TripIntent | ProductRecommendation, recommendationOrIntent: ProductRecommendation | TripIntent, products: Product[] = catalog.products): Product[] | ProductRecommendation[] {
+  const recommendationFirst = "product" in intentOrRecommendation;
+  const intent = recommendationFirst ? recommendationOrIntent as TripIntent : intentOrRecommendation as TripIntent;
+  const recommendation = recommendationFirst ? intentOrRecommendation : recommendationOrIntent as ProductRecommendation;
   const rule = rulesFor(intent).find((candidate) => candidate.category === recommendation.category);
   if (!rule) return [];
-  return products
+  const alternatives = products
     .filter((product) => product.id !== recommendation.product.id && satisfiesHardConstraints(product, rule.category, intent))
-    .sort((a, b) => compareCandidates(a, b, intent))
-    .map((product) => recommendationFor(product, rule, intent));
+    .sort((a, b) => compareCandidates(a, b, intent));
+  return recommendationFirst ? alternatives : alternatives.map((product) => recommendationFor(product, rule, intent));
 }
 
 /** Build a deterministic starting kit. Passing products makes stock and catalog edge cases directly testable. */
