@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ProductCard } from "@/components/product-card";
 import { getActivity, getProductsByActivity } from "@/lib/catalog";
 
 export default async function ActivityPage({ params }: { params: Promise<{ activity: string }> }) {
@@ -16,7 +17,7 @@ export default async function ActivityPage({ params }: { params: Promise<{ activ
         <section className="state-card" aria-live="polite"><span className="state-icon">⌁</span><h2>No gear here yet</h2><p>We’re still building this collection. Choose another activity to keep exploring.</p><Link className="button" href="/#activities">Browse all activities</Link></section>
       ) : (
         <section className="products-section"><div className="results-heading"><h2>Gear for {activity.name.toLowerCase()}</h2><p>{products.length} {products.length === 1 ? "product" : "products"}</p></div><div className="product-grid">
-          {products.map((product) => <article className="product-card" key={product.id}><div className="product-image"><span>{product.category.replaceAll("-", " ")}</span></div><div className="product-info"><p>{product.brand}</p><h3>{product.name}</h3><div><strong>${product.price.toFixed(2)}</strong><span>★ {product.rating} <small>({product.reviewCount})</small></span></div>{product.availability.status === "out-of-stock" && <mark>Out of stock</mark>}</div></article>)}
+          {products.map((product) => <ProductCard product={product} key={product.id} />)}
         </div></section>
       )}
     </main>

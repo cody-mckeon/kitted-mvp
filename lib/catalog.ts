@@ -19,3 +19,13 @@ export function getActivity(slug: string) {
 export function getProductsByActivity(slug: string): Product[] {
   return catalog.products.filter((product) => product.activities.includes(slug as ActivitySlug));
 }
+
+export function searchProducts(query: string): Product[] {
+  const normalizedQuery = query.trim().toLocaleLowerCase();
+  if (!normalizedQuery) return [];
+  return catalog.products.filter((product) =>
+    [product.name, product.brand, product.category, ...product.tags].some((value) =>
+      value.toLocaleLowerCase().includes(normalizedQuery),
+    ),
+  );
+}

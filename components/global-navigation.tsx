@@ -64,6 +64,7 @@ export function GlobalNavigation() {
 
       <nav className="desktop-navigation" aria-label="Main navigation">
         <Link className={pathname === "/" ? "selected" : ""} href="/" aria-current={pathname === "/" ? "page" : undefined}>Home</Link>
+        <Link className={pathname === "/search" ? "selected" : ""} href="/search" aria-current={pathname === "/search" ? "page" : undefined}>Search</Link>
         <button
           className="browse-trigger"
           type="button"
@@ -95,6 +96,7 @@ export function GlobalNavigation() {
       {mobileOpen && (
         <nav className="mobile-navigation" id="mobile-navigation" aria-label="Mobile navigation">
           <Link className={pathname === "/" ? "mobile-home selected" : "mobile-home"} href="/" aria-current={pathname === "/" ? "page" : undefined}>Home</Link>
+          <Link className={pathname === "/search" ? "mobile-home selected" : "mobile-home"} href="/search" aria-current={pathname === "/search" ? "page" : undefined}>Search gear</Link>
           <p className="kicker">Shop by activity</p>
           <div>{activities.map((activity) => activityLink(activity, true))}</div>
         </nav>
