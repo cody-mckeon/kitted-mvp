@@ -17,6 +17,16 @@ test("SLI-41 records recommendation criteria, kit size, and result state", async
   for (const text of ["recommendations_viewed", "criteria", "kit_size", "result_state"]) assert.ok(source.includes(text), `missing ${text}`);
 });
 
+test("SLI-43 supports category-safe remove, restore, replace, and trip regeneration", async () => {
+  const source = await readFile(new URL("../components/build-my-kit-questionnaire.tsx", import.meta.url), "utf8");
+  for (const text of ["removeRecommendation", "restoreRecommendation", "replaceRecommendation", "View alternatives", "Partial kit:", "Edit trip details &amp; regenerate", "item.category === current.category"]) assert.ok(source.includes(text), `missing ${text}`);
+});
+
+test("SLI-43 records modification action, product, category, and kit context", async () => {
+  const source = await readFile(new URL("../components/build-my-kit-questionnaire.tsx", import.meta.url), "utf8");
+  for (const text of ["kit_modified", "action", "product_id", "category", "kit_context", "replaced_product_id"]) assert.ok(source.includes(text), `missing ${text}`);
+});
+
 test("SLI-69 includes analytics with the required properties", async () => {
   const source = await readFile(new URL("../components/build-my-kit-questionnaire.tsx", import.meta.url), "utf8");
   for (const text of ["adventure_started", "entry_point", "adventure_step_completed", "step:", "adventure_completed", "completion_status", "activity:"]) assert.ok(source.includes(text), `missing ${text}`);
