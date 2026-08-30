@@ -129,6 +129,11 @@ function compareCandidates(a: Product, b: Product, intent: TripIntent): number {
     || a.id.localeCompare(b.id);
 }
 
+/** Return next-best products using the recommendation's hard constraints and ranking. */
+export function getRecommendationAlternatives(recommendation: ProductRecommendation, intent: TripIntent, products: Product[] = catalog.products): Product[] {
+  return products
+    .filter((product) => product.id !== recommendation.product.id && satisfiesHardConstraints(product, recommendation.category, intent))
+    .sort((a, b) => compareCandidates(a, b, intent));
 function recommendationFor(product: Product, rule: CategoryRule, intent: TripIntent): ProductRecommendation {
   const softSignals = matchingSoftSignals(product, intent);
   const trace = { ruleId: rule.id, category: rule.category, matchedSignals: [`activity:${intent.activity}`, ...softSignals, `priority:${intent.shopper.purchasePriority}`], softScore: softSignals.length };
