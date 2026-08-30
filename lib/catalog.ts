@@ -11,6 +11,7 @@ export const activities = [
 
 export type ActivitySlug = (typeof activities)[number]["slug"];
 export type Product = (typeof catalog.products)[number];
+export const products: Product[] = catalog.products;
 export type CatalogFilters = {
   activity: string[]; category: string[]; brand: string[]; rating: string[];
   availability: string[]; weight: string[]; waterproof: string[]; seasonality: string[];

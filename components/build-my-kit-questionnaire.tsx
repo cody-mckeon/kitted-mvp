@@ -1,11 +1,12 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { activities } from "@/lib/catalog";
+import { activities, products, type Product } from "@/lib/catalog";
 import { track } from "@/lib/analytics";
 import { recommendStartingKit, type RecommendationResult } from "@/lib/recommendation-engine";
 import { createTripIntent, emptyTripIntentAnswers, tripIntentOptions, type TripIntent, type TripIntentAnswers } from "@/lib/trip-intent";
 import { ProductCard } from "@/components/product-card";
+import { useCart } from "@/components/cart-provider";
 
 type AnswerKey = keyof TripIntentAnswers;
 type Step = { key: AnswerKey; title: string; hint: string; options?: readonly string[] };
@@ -22,6 +23,7 @@ const labels: Record<string, string> = { camping:"Camping", hiking:"Hiking", bac
 const answerLabels: Record<AnswerKey, string> = { activity:"Activity", duration:"Trip duration", climate:"Weather or climate", terrain:"Terrain", experienceLevel:"Experience level", groupSize:"Group size", purchasePriority:"Purchase priority" };
 
 export function BuildMyKitQuestionnaire() {
+  const { addProduct, lines, subtotal } = useCart();
   const [answers, setAnswers] = useState(emptyTripIntentAnswers);
   const [stepIndex, setStepIndex] = useState(0);
   const [reviewing, setReviewing] = useState(false);
@@ -30,6 +32,9 @@ export function BuildMyKitQuestionnaire() {
   const [generating, setGenerating] = useState(false);
   const [result, setResult] = useState<RecommendationResult | null>(null);
   const [recommendationError, setRecommendationError] = useState("");
+  const [activeKit, setActiveKit] = useState<RecommendationResult["recommendations"]>([]);
+  const [cartFeedback, setCartFeedback] = useState("");
+  const [cartFeedbackKind, setCartFeedbackKind] = useState<"success" | "error">("success");
   const started = useRef(false);
   const entryPoint = useRef(typeof window === "undefined" ? "direct" : new URLSearchParams(window.location.search).get("entry") || "direct");
   const step = steps[stepIndex];
@@ -60,6 +65,7 @@ export function BuildMyKitQuestionnaire() {
       const recommendations = recommendStartingKit(intent);
       const resultState = recommendations.recommendations.length === 0 ? "no-suitable-kit" : recommendations.gaps.length ? "partial-kit" : "available-kit";
       setResult(recommendations);
+      setActiveKit(recommendations.recommendations);
       track("recommendations_viewed", {
         criteria: JSON.stringify(intent),
         kit_size: recommendations.recommendations.length,
@@ -71,8 +77,40 @@ export function BuildMyKitQuestionnaire() {
       setGenerating(false);
     }
   }
-  function reset() { setAnswers(emptyTripIntentAnswers()); setStepIndex(0); setReviewing(false); setCompleted(null); setResult(null); setGenerating(false); setRecommendationError(""); setError(""); started.current = false; }
-  function editTrip() { setCompleted(null); setResult(null); setRecommendationError(""); setReviewing(true); }
+  function reset() { setAnswers(emptyTripIntentAnswers()); setStepIndex(0); setReviewing(false); setCompleted(null); setResult(null); setActiveKit([]); setCartFeedback(""); setGenerating(false); setRecommendationError(""); setError(""); started.current = false; }
+  function editTrip() { setCompleted(null); setResult(null); setActiveKit([]); setCartFeedback(""); setRecommendationError(""); setReviewing(true); }
+
+  function isAvailable(product: Product) {
+    return product.availability.status !== "out-of-stock" && product.availability.addToCartEligible && product.availability.quantity > 0;
+  }
+  function analytics(product: Product, kitSize: number) {
+    return { recommendation_source: "build_my_kit", kit_context: "starting-kit", activity: completed?.activity ?? "unknown", product_id: product.id, quantity: 1, price: product.price, kit_size: kitSize };
+  }
+  function addRecommendation(product: Product) {
+    if (!completed || !isAvailable(product)) { setCartFeedbackKind("error"); setCartFeedback(`${product.name} is unavailable and was not added.`); return; }
+    addProduct(product);
+    track("product_added_to_cart", analytics(product, activeKit.length));
+    const quantity = (lines.find((line) => line.id === product.id)?.quantity ?? 0) + 1;
+    setCartFeedbackKind("success");
+    setCartFeedback(`${product.name} added. Quantity: ${quantity}. Cart subtotal: $${(subtotal + product.price).toFixed(2)}.`);
+  }
+  function addKit() {
+    if (!completed || !result || activeKit.length === 0) { setCartFeedbackKind("error"); setCartFeedback("There are no products in this kit to add."); return; }
+    const eligible = activeKit.filter(({ product }) => isAvailable(product));
+    eligible.forEach(({ product }) => { addProduct(product); track("product_added_to_cart", analytics(product, activeKit.length)); });
+    const price = eligible.reduce((total, { product }) => total + product.price, 0);
+    const partial = eligible.length !== activeKit.length || activeKit.length !== result.recommendations.length || result.gaps.length > 0;
+    track("kit_added_to_cart", { recommendation_source: "build_my_kit", kit_context: "starting-kit", activity: completed.activity, product_ids: eligible.map(({ product }) => product.id).join(","), quantity: eligible.length, price, kit_size: activeKit.length, result_state: partial ? "partial" : "complete" });
+    setCartFeedbackKind(eligible.length ? "success" : "error");
+    setCartFeedback(eligible.length ? `${eligible.length} ${eligible.length === 1 ? "product" : "products"} added from your ${partial ? "partial" : "complete"} kit. Cart subtotal: $${(subtotal + price).toFixed(2)}.` : "The products in this kit are unavailable and were not added.");
+  }
+  function removeRecommendation(category: string) { setActiveKit((kit) => kit.filter((item) => item.category !== category)); setCartFeedback(""); }
+  function replaceRecommendation(category: string, productId: string) {
+    const replacement = products.find((product) => product.id === productId);
+    if (!replacement || !isAvailable(replacement)) return;
+    setActiveKit((kit) => kit.map((item) => item.category === category ? { ...item, product: replacement, reason: `You selected ${replacement.name} as the available alternative for this category.` } : item));
+    setCartFeedback("");
+  }
 
   if (generating) return <main className="kit-results-page"><section className="kit-generating" aria-live="polite" aria-busy="true"><div className="kit-loader" aria-hidden="true" /><p className="kicker">Building from your trip details</p><h1>Generating your starting kit…</h1><p>We’re matching available catalog gear to your activity, conditions, experience, group size, and purchase priority.</p></section></main>;
 
@@ -82,8 +120,8 @@ export function BuildMyKitQuestionnaire() {
     const state = result.recommendations.length === 0 ? "no-suitable-kit" : result.gaps.length ? "partial-kit" : "available-kit";
     const criteria = [labels[completed.activity], labels[completed.trip.duration], labels[completed.trip.climate], labels[completed.trip.terrain]];
     return <main className="kit-results-page">
-      <header className="kit-results-hero"><p className="kicker">Based on your trip details</p><h1>{state === "available-kit" ? "Your recommended starting kit" : state === "partial-kit" ? "Your partial starting kit" : "No suitable starting kit found"}</h1><p>{state === "available-kit" ? "We found an available match for every category in this starting kit." : state === "partial-kit" ? "We found useful matches, but some categories have no suitable available product." : "The current catalog does not have suitable available matches for these trip details."}</p><ul aria-label="Trip criteria">{criteria.map((criterion) => <li key={criterion}>{criterion}</li>)}<li>{completed.trip.groupSize} {completed.trip.groupSize === 1 ? "person" : "people"}</li><li>{labels[completed.shopper.experienceLevel]}</li><li>{labels[completed.shopper.purchasePriority]} priority</li></ul><div className="kit-actions"><button className="button secondary-button" type="button" onClick={editTrip}>Edit trip details</button><button className="back-button" type="button" onClick={reset}>Start over</button></div></header>
-      {result.recommendations.length > 0 && <section className="kit-products" aria-labelledby="kit-products-title"><div className="results-heading"><div><p className="kicker">Recommended gear</p><h2 id="kit-products-title">{result.recommendations.length} catalog {result.recommendations.length === 1 ? "match" : "matches"}</h2></div><p>A focused starting point—not a claim of everything you need.</p></div><div className="kit-product-grid">{result.recommendations.map((recommendation) => <div className="kit-recommendation" key={recommendation.category}><ProductCard product={recommendation.product} source="recommended-kit" /><div className="recommendation-reason"><strong>Why it fits</strong><p>{recommendation.reason}</p></div></div>)}</div></section>}
+      <header className="kit-results-hero"><p className="kicker">Based on your trip details</p><h1>{state === "available-kit" ? "Your recommended starting kit" : state === "partial-kit" ? "Your partial starting kit" : "No suitable starting kit found"}</h1><p>{state === "available-kit" ? "We found an available match for every category in this starting kit." : state === "partial-kit" ? "We found useful matches, but some categories have no suitable available product." : "The current catalog does not have suitable available matches for these trip details."}</p><ul aria-label="Trip criteria">{criteria.map((criterion) => <li key={criterion}>{criterion}</li>)}<li>{completed.trip.groupSize} {completed.trip.groupSize === 1 ? "person" : "people"}</li><li>{labels[completed.shopper.experienceLevel]}</li><li>{labels[completed.shopper.purchasePriority]} priority</li></ul><div className="kit-actions">{activeKit.length > 0 && <button className="button" type="button" onClick={addKit}>Add current kit to cart</button>}<button className="button secondary-button" type="button" onClick={editTrip}>Edit trip details</button><button className="back-button" type="button" onClick={reset}>Start over</button></div>{cartFeedback && <p className={`kit-cart-feedback ${cartFeedbackKind}`} role="status" aria-live="polite">{cartFeedback}</p>}</header>
+      {result.recommendations.length > 0 && <section className="kit-products" aria-labelledby="kit-products-title"><div className="results-heading"><div><p className="kicker">Recommended gear</p><h2 id="kit-products-title">{activeKit.length} {activeKit.length === 1 ? "product" : "products"} in your current kit</h2></div><p>A focused starting point—not a claim of everything you need.</p></div><div className="kit-product-grid">{activeKit.map((recommendation) => { const alternatives = products.filter((product) => product.category === recommendation.category && product.id !== recommendation.product.id && product.activities.includes(completed.activity) && isAvailable(product)); return <div className="kit-recommendation" key={recommendation.category}><ProductCard product={recommendation.product} source="recommended-kit" /><div className="recommendation-reason"><strong>Why it fits</strong><p>{recommendation.reason}</p></div><div className="recommendation-controls"><button className="button" type="button" onClick={() => addRecommendation(recommendation.product)}>Add this product</button><button className="back-button" type="button" onClick={() => removeRecommendation(recommendation.category)}>Remove from kit</button>{alternatives.length > 0 && <label>Choose an alternative<select value="" onChange={(event) => replaceRecommendation(recommendation.category, event.target.value)}><option value="" disabled>Replace this product</option>{alternatives.map((product) => <option key={product.id} value={product.id}>{product.name} — ${product.price.toFixed(2)}</option>)}</select></label>}</div></div>; })}</div>{activeKit.length === 0 && <div className="kit-empty" role="status"><h3>Your current kit is empty.</h3><p>Removed products will not be added to your cart. Edit your trip or start over to build another kit.</p></div>}</section>}
       {result.gaps.length > 0 && <section className="kit-gaps" aria-labelledby="kit-gaps-title"><p className="kicker">Catalog gaps</p><h2 id="kit-gaps-title">{state === "no-suitable-kit" ? "No suitable products available" : "Still needed for this starting kit"}</h2><div>{result.gaps.map((gap) => <article key={`${gap.category}-${gap.trace.ruleId}`}><span aria-hidden="true">!</span><div><h3>{gap.category.replaceAll("-", " ")}</h3><strong>{gap.status === "unavailable" ? "Suitable match currently unavailable" : "No suitable match"}</strong><p>{gap.reason}</p></div></article>)}</div></section>}
     </main>;
   }
