@@ -9,6 +9,7 @@ export type RecommendationRuleTrace = {
   ruleId: string;
   category: ProductCategory;
   matchedSignals: string[];
+  softScore?: number;
 };
 
 export type ProductRecommendation = {
@@ -84,17 +85,32 @@ function rulesFor(intent: TripIntent): CategoryRule[] {
   return rules;
 }
 
-function isSuitable(product: Product, intent: TripIntent): boolean {
+function satisfiesHardConstraints(product: Product, category: ProductCategory, intent: TripIntent): boolean {
+  return product.category === category
+    && product.activities.includes(intent.activity)
+    && product.availability.status !== "out-of-stock"
+    && product.availability.addToCartEligible
+    && product.availability.quantity > 0
+    && (product.category !== "tents" || (product.filterAttributes.personCapacity ?? 0) >= intent.trip.groupSize);
+}
+
+function matchingSoftSignals(product: Product, intent: TripIntent): string[] {
   const attrs = product.recommendationAttributes;
   const days = durationDays[intent.trip.duration];
-  const sharedItem = product.category === "tents" || product.category === "cookware";
+  const signals: string[] = [];
+
+  if (days >= attrs.tripDurationDays.min && days <= attrs.tripDurationDays.max) signals.push(`duration:${intent.trip.duration}`);
+  if (climates[intent.trip.climate].some((value) => attrs.climates.includes(value))) signals.push(`climate:${intent.trip.climate}`);
+  if (terrainSignals(intent).some((value) => attrs.terrains.includes(value))) signals.push(`terrain:${intent.trip.terrain}`);
+  if (attrs.experienceLevels.includes(experience[intent.shopper.experienceLevel])) signals.push(`experience:${intent.shopper.experienceLevel}`);
+  if (product.category !== "tents" && attrs.groupSizes.includes(Math.min(intent.trip.groupSize, 8))) signals.push(`group-size:${intent.trip.groupSize}`);
+  return signals;
+}
+
+function wasOnlyUnavailable(product: Product, category: ProductCategory, intent: TripIntent): boolean {
   return product.activities.includes(intent.activity)
-    && days >= attrs.tripDurationDays.min && days <= attrs.tripDurationDays.max
-    && climates[intent.trip.climate].some((value) => attrs.climates.includes(value))
-    && terrainSignals(intent).some((value) => attrs.terrains.includes(value))
-    && attrs.experienceLevels.includes(experience[intent.shopper.experienceLevel])
-    && (!sharedItem || attrs.groupSizes.includes(Math.min(intent.trip.groupSize, 8)))
-    && (product.category !== "tents" || !product.filterAttributes.personCapacity || product.filterAttributes.personCapacity >= intent.trip.groupSize);
+    && product.category === category
+    && (product.category !== "tents" || (product.filterAttributes.personCapacity ?? 0) >= intent.trip.groupSize);
 }
 
 function priorityValue(product: Product, intent: TripIntent): number {
@@ -105,16 +121,12 @@ function priorityValue(product: Product, intent: TripIntent): number {
   return product.recommendationAttributes.packWeightPriority === desired ? 0 : 1;
 }
 
-function matchedSignals(intent: TripIntent): string[] {
-  return [
-    `activity:${intent.activity}`,
-    `duration:${intent.trip.duration}`,
-    `climate:${intent.trip.climate}`,
-    `terrain:${intent.trip.terrain}`,
-    `experience:${intent.shopper.experienceLevel}`,
-    `group-size:${intent.trip.groupSize}`,
-    `priority:${intent.shopper.purchasePriority}`,
-  ];
+function compareCandidates(a: Product, b: Product, intent: TripIntent): number {
+  const scoreDifference = matchingSoftSignals(b, intent).length - matchingSoftSignals(a, intent).length;
+  return scoreDifference
+    || priorityValue(a, intent) - priorityValue(b, intent)
+    || b.rating - a.rating
+    || a.id.localeCompare(b.id);
 }
 
 /** Build a deterministic starting kit. Passing products makes stock and catalog edge cases directly testable. */
@@ -123,16 +135,19 @@ export function recommendStartingKit(intent: TripIntent, products: Product[] = c
   const gaps: RecommendationGap[] = [];
 
   for (const rule of rulesFor(intent)) {
-    const trace = { ruleId: rule.id, category: rule.category, matchedSignals: matchedSignals(intent) };
-    const suitable = products.filter((product) => product.category === rule.category && isSuitable(product, intent));
-    const available = suitable.filter((product) => product.availability.status !== "out-of-stock" && product.availability.addToCartEligible && product.availability.quantity > 0);
-    available.sort((a, b) => priorityValue(a, intent) - priorityValue(b, intent) || b.rating - a.rating || a.id.localeCompare(b.id));
+    const available = products.filter((product) => satisfiesHardConstraints(product, rule.category, intent));
+    available.sort((a, b) => compareCandidates(a, b, intent));
     const product = available[0];
     if (product) {
-      recommendations.push({ category: rule.category, product, reason: `${rule.why}; ${intent.shopper.purchasePriority} priority selected ${product.name}.`, trace });
+      const softSignals = matchingSoftSignals(product, intent);
+      const trace = { ruleId: rule.id, category: rule.category, matchedSignals: [`activity:${intent.activity}`, ...softSignals, `priority:${intent.shopper.purchasePriority}`], softScore: softSignals.length };
+      const matchedSummary = softSignals.length ? softSignals.map((signal) => signal.split(":")[0]).join(", ") : "the available catalog options";
+      recommendations.push({ category: rule.category, product, reason: `${rule.why}; ${product.name} is the best available match based on ${matchedSummary}, with ${intent.shopper.purchasePriority} used to rank otherwise similar matches.`, trace });
     } else {
-      const status = suitable.length ? "unavailable" : "no-suitable-product";
-      gaps.push({ category: rule.category, status, reason: status === "unavailable" ? `Suitable ${rule.category} matched ${rule.id}, but none are currently available.` : `No ${rule.category} matched ${rule.id} and all trip-intent constraints.`, trace });
+      const unavailable = products.some((product) => wasOnlyUnavailable(product, rule.category, intent));
+      const status = unavailable ? "unavailable" : "no-suitable-product";
+      const trace = { ruleId: rule.id, category: rule.category, matchedSignals: [`activity:${intent.activity}`] };
+      gaps.push({ category: rule.category, status, reason: status === "unavailable" ? `No available, add-to-cart eligible ${rule.category} satisfies the required activity and capacity.` : `No ${rule.category} satisfies the required activity and capacity.`, trace });
     }
   }
 
