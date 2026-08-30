@@ -67,6 +67,7 @@ export function GlobalNavigation() {
       <nav className="desktop-navigation" aria-label="Main navigation">
         <Link className={pathname === "/" ? "selected" : ""} href="/" aria-current={pathname === "/" ? "page" : undefined}>Home</Link>
         <Link className={pathname === "/search" ? "selected" : ""} href="/search" aria-current={pathname === "/search" ? "page" : undefined}>Search</Link>
+        <Link className={pathname === "/build-my-kit" ? "selected" : ""} href="/build-my-kit?entry=global_navigation" aria-current={pathname === "/build-my-kit" ? "page" : undefined}>Build my kit</Link>
         <button
           className="browse-trigger"
           type="button"
@@ -101,6 +102,7 @@ export function GlobalNavigation() {
         <nav className="mobile-navigation" id="mobile-navigation" aria-label="Mobile navigation">
           <Link className={pathname === "/" ? "mobile-home selected" : "mobile-home"} href="/" aria-current={pathname === "/" ? "page" : undefined}>Home</Link>
           <Link className={pathname === "/search" ? "mobile-home selected" : "mobile-home"} href="/search" aria-current={pathname === "/search" ? "page" : undefined}>Search gear</Link>
+          <Link className={pathname === "/build-my-kit" ? "mobile-home selected" : "mobile-home"} href="/build-my-kit?entry=global_navigation" aria-current={pathname === "/build-my-kit" ? "page" : undefined}>Build my kit</Link>
           <p className="kicker">Shop by activity</p>
           <div>{activities.map((activity) => activityLink(activity, true))}</div>
         </nav>
