@@ -129,6 +129,13 @@ function compareCandidates(a: Product, b: Product, intent: TripIntent): number {
     || a.id.localeCompare(b.id);
 }
 
+/** Return next-best products using the recommendation's hard constraints and ranking. */
+export function getRecommendationAlternatives(recommendation: ProductRecommendation, intent: TripIntent, products: Product[] = catalog.products): Product[] {
+  return products
+    .filter((product) => product.id !== recommendation.product.id && satisfiesHardConstraints(product, recommendation.category, intent))
+    .sort((a, b) => compareCandidates(a, b, intent));
+}
+
 /** Build a deterministic starting kit. Passing products makes stock and catalog edge cases directly testable. */
 export function recommendStartingKit(intent: TripIntent, products: Product[] = catalog.products): RecommendationResult {
   const recommendations: ProductRecommendation[] = [];

@@ -17,6 +17,11 @@ test("SLI-41 records recommendation criteria, kit size, and result state", async
   for (const text of ["recommendations_viewed", "criteria", "kit_size", "result_state"]) assert.ok(source.includes(text), `missing ${text}`);
 });
 
+test("SLI-42 explains recommendations, exposes alternatives and records product evaluation", async () => {
+  const source = await readFile(new URL("../components/build-my-kit-questionnaire.tsx", import.meta.url), "utf8");
+  for (const text of ["Key spec", "View alternatives", "No other suitable available products", "recommendation_alternative_viewed", "recommendation_selected", "product_id", "kit_activity", "kit_size", "selection_source"]) assert.ok(source.includes(text), `missing ${text}`);
+});
+
 test("SLI-69 includes analytics with the required properties", async () => {
   const source = await readFile(new URL("../components/build-my-kit-questionnaire.tsx", import.meta.url), "utf8");
   for (const text of ["adventure_started", "entry_point", "adventure_step_completed", "step:", "adventure_completed", "completion_status", "activity:"]) assert.ok(source.includes(text), `missing ${text}`);

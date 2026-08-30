@@ -8,7 +8,7 @@ const catalog = JSON.parse(await readFile(new URL("../data/catalog.json", import
 const compiled = ts.transpileModule(source.replace(/^import .*;$/gm, ""), { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 } }).outputText;
 const module = { exports: {} };
 new Function("exports", "module", compiled)(module.exports, module);
-const { recommendStartingKit } = module.exports;
+const { getRecommendationAlternatives, recommendStartingKit } = module.exports;
 
 function intent(activity, overrides = {}) {
   return {
@@ -100,4 +100,23 @@ test("equal rankings use product id as a deterministic stable tie breaker", () =
   const second = recommendStartingKit(intent("backpacking"), [earlier, later]).recommendations.find((item) => item.category === "sleeping-bags");
   assert.equal(first?.product.id, "TEST-A");
   assert.equal(second?.product.id, "TEST-A");
+});
+
+test("alternatives reuse hard constraints and deterministic ranking", () => {
+  const trip = intent("camping");
+  const result = recommendStartingKit(trip, catalog.products);
+  const recommendation = result.recommendations.find((item) => item.category === "tents");
+  assert.ok(recommendation);
+  const alternatives = getRecommendationAlternatives(recommendation, trip, catalog.products);
+  assert.ok(alternatives.length > 0);
+  assert.ok(alternatives.every((product) => product.id !== recommendation.product.id));
+  assert.ok(alternatives.every((product) => product.category === recommendation.category && product.activities.includes(trip.activity)));
+  assert.ok(alternatives.every((product) => product.availability.status !== "out-of-stock" && product.availability.addToCartEligible && product.availability.quantity > 0));
+});
+
+test("alternatives clearly support a no-match state", () => {
+  const trip = intent("camping");
+  const result = recommendStartingKit(trip, catalog.products);
+  const recommendation = result.recommendations[0];
+  assert.deepEqual(getRecommendationAlternatives(recommendation, trip, [recommendation.product]), []);
 });
