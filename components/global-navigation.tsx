@@ -5,12 +5,14 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { deviceContext, track } from "@/lib/analytics";
 import { activities } from "@/lib/catalog";
+import { useCart } from "@/components/cart-provider";
 
 export function GlobalNavigation() {
   const pathname = usePathname();
   const [desktopOpen, setDesktopOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  const { itemCount, subtotal } = useCart();
 
   useEffect(() => {
     setDesktopOpen(false);
@@ -76,7 +78,9 @@ export function GlobalNavigation() {
         </button>
       </nav>
 
-      <span className="header-note">Gear for wherever you go</span>
+      <div className="header-cart" aria-label={`Cart with ${itemCount} items, subtotal $${subtotal.toFixed(2)}`}>
+        <span>Cart</span><strong aria-hidden="true">{itemCount}</strong>{itemCount > 0 && <small>${subtotal.toFixed(2)}</small>}
+      </div>
       <button
         className="mobile-menu-trigger"
         type="button"
