@@ -134,6 +134,21 @@ export function getRecommendationAlternatives(recommendation: ProductRecommendat
   return products
     .filter((product) => product.id !== recommendation.product.id && satisfiesHardConstraints(product, recommendation.category, intent))
     .sort((a, b) => compareCandidates(a, b, intent));
+function recommendationFor(product: Product, rule: CategoryRule, intent: TripIntent): ProductRecommendation {
+  const softSignals = matchingSoftSignals(product, intent);
+  const trace = { ruleId: rule.id, category: rule.category, matchedSignals: [`activity:${intent.activity}`, ...softSignals, `priority:${intent.shopper.purchasePriority}`], softScore: softSignals.length };
+  const matchedSummary = softSignals.length ? softSignals.map((signal) => signal.split(":")[0]).join(", ") : "the available catalog options";
+  return { category: rule.category, product, reason: `${rule.why}; ${product.name} is an available match based on ${matchedSummary}, with ${intent.shopper.purchasePriority} used to rank otherwise similar matches.`, trace };
+}
+
+/** Return the other valid products for a recommendation, in the same deterministic rank order. */
+export function getRecommendationAlternatives(intent: TripIntent, recommendation: ProductRecommendation, products: Product[] = catalog.products): ProductRecommendation[] {
+  const rule = rulesFor(intent).find((candidate) => candidate.category === recommendation.category);
+  if (!rule) return [];
+  return products
+    .filter((product) => product.id !== recommendation.product.id && satisfiesHardConstraints(product, rule.category, intent))
+    .sort((a, b) => compareCandidates(a, b, intent))
+    .map((product) => recommendationFor(product, rule, intent));
 }
 
 /** Build a deterministic starting kit. Passing products makes stock and catalog edge cases directly testable. */
@@ -146,10 +161,9 @@ export function recommendStartingKit(intent: TripIntent, products: Product[] = c
     available.sort((a, b) => compareCandidates(a, b, intent));
     const product = available[0];
     if (product) {
-      const softSignals = matchingSoftSignals(product, intent);
-      const trace = { ruleId: rule.id, category: rule.category, matchedSignals: [`activity:${intent.activity}`, ...softSignals, `priority:${intent.shopper.purchasePriority}`], softScore: softSignals.length };
-      const matchedSummary = softSignals.length ? softSignals.map((signal) => signal.split(":")[0]).join(", ") : "the available catalog options";
-      recommendations.push({ category: rule.category, product, reason: `${rule.why}; ${product.name} is the best available match based on ${matchedSummary}, with ${intent.shopper.purchasePriority} used to rank otherwise similar matches.`, trace });
+      const recommendation = recommendationFor(product, rule, intent);
+      recommendation.reason = recommendation.reason.replace("an available match", "the best available match");
+      recommendations.push(recommendation);
     } else {
       const unavailable = products.some((product) => wasOnlyUnavailable(product, rule.category, intent));
       const status = unavailable ? "unavailable" : "no-suitable-product";
