@@ -1,10 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { useRef, useState } from "react";
 import { activities } from "@/lib/catalog";
-import { deviceContext, track } from "@/lib/analytics";
+import { track } from "@/lib/analytics";
+import { recommendStartingKit, type RecommendationResult } from "@/lib/recommendation-engine";
 import { createTripIntent, emptyTripIntentAnswers, tripIntentOptions, type TripIntent, type TripIntentAnswers } from "@/lib/trip-intent";
+import { ProductCard } from "@/components/product-card";
 
 type AnswerKey = keyof TripIntentAnswers;
 type Step = { key: AnswerKey; title: string; hint: string; options?: readonly string[] };
@@ -26,6 +27,9 @@ export function BuildMyKitQuestionnaire() {
   const [reviewing, setReviewing] = useState(false);
   const [error, setError] = useState("");
   const [completed, setCompleted] = useState<TripIntent | null>(null);
+  const [generating, setGenerating] = useState(false);
+  const [result, setResult] = useState<RecommendationResult | null>(null);
+  const [recommendationError, setRecommendationError] = useState("");
   const started = useRef(false);
   const entryPoint = useRef(typeof window === "undefined" ? "direct" : new URLSearchParams(window.location.search).get("entry") || "direct");
   const step = steps[stepIndex];
@@ -38,21 +42,53 @@ export function BuildMyKitQuestionnaire() {
     track("adventure_step_completed", { activity: String(answers.activity), step: step.key, completion_status: "completed" });
     if (stepIndex === steps.length - 1) setReviewing(true); else setStepIndex((value) => value + 1);
   }
-  function submit() {
+  async function submit() {
+    let intent: TripIntent;
     try {
-      const intent = createTripIntent(answers);
-      setCompleted(intent);
-      track("adventure_completed", { activity: intent.activity, completion_status: "completed" });
-      window.dispatchEvent(new CustomEvent("kitted:trip-intent", { detail: intent }));
+      intent = createTripIntent(answers);
     } catch {
       setError("We couldn't complete your trip details. Review your answers and try again.");
+      return;
+    }
+    setCompleted(intent);
+    setGenerating(true);
+    setRecommendationError("");
+    track("adventure_completed", { activity: intent.activity, completion_status: "completed" });
+    window.dispatchEvent(new CustomEvent("kitted:trip-intent", { detail: intent }));
+    try {
+      await new Promise((resolve) => window.setTimeout(resolve, 450));
+      const recommendations = recommendStartingKit(intent);
+      const resultState = recommendations.recommendations.length === 0 ? "no-suitable-kit" : recommendations.gaps.length ? "partial-kit" : "available-kit";
+      setResult(recommendations);
+      track("recommendations_viewed", {
+        criteria: JSON.stringify(intent),
+        kit_size: recommendations.recommendations.length,
+        result_state: resultState,
+      });
+    } catch {
+      setRecommendationError("We couldn't generate your starting kit. Your trip details are safe—please try again.");
+    } finally {
+      setGenerating(false);
     }
   }
-  function reset() { setAnswers(emptyTripIntentAnswers()); setStepIndex(0); setReviewing(false); setCompleted(null); setError(""); started.current = false; }
+  function reset() { setAnswers(emptyTripIntentAnswers()); setStepIndex(0); setReviewing(false); setCompleted(null); setResult(null); setGenerating(false); setRecommendationError(""); setError(""); started.current = false; }
+  function editTrip() { setCompleted(null); setResult(null); setRecommendationError(""); setReviewing(true); }
 
-  if (completed) return <main className="questionnaire-page"><section className="questionnaire-complete" aria-live="polite"><p className="kicker">Adventure captured</p><h1>Your trip details are ready.</h1><p>Your structured trip intent is ready for the next stage. Product recommendations are not part of this prototype step.</p><details><summary>Inspect trip-intent payload</summary><pre data-testid="trip-intent-payload">{JSON.stringify(completed, null, 2)}</pre></details><div className="questionnaire-actions"><button className="button secondary-button" onClick={reset}>Start over</button><Link className="button" href={`/activities/${completed.activity}`}>Browse {labels[completed.activity]}</Link></div></section></main>;
+  if (generating) return <main className="kit-results-page"><section className="kit-generating" aria-live="polite" aria-busy="true"><div className="kit-loader" aria-hidden="true" /><p className="kicker">Building from your trip details</p><h1>Generating your starting kit…</h1><p>We’re matching available catalog gear to your activity, conditions, experience, group size, and purchase priority.</p></section></main>;
 
-  if (reviewing) return <main className="questionnaire-page"><section className="questionnaire-shell"><p className="kicker">Review your adventure</p><h1>Does everything look right?</h1><p className="questionnaire-intro">Edit any answer before completing your trip details.</p><dl className="review-list">{steps.map((item, index) => <div key={item.key}><dt>{answerLabels[item.key]}</dt><dd>{item.key === "groupSize" ? `${answers.groupSize} ${answers.groupSize === 1 ? "person" : "people"}` : labels[String(answers[item.key])]}<button type="button" onClick={() => { setStepIndex(index); setReviewing(false); setError(""); }}>Edit <span className="sr-only">{answerLabels[item.key]}</span></button></dd></div>)}</dl>{error && <p className="questionnaire-error" role="alert">{error}</p>}<div className="questionnaire-actions"><button className="back-button" type="button" onClick={() => { setReviewing(false); setStepIndex(steps.length - 1); }}>Back</button><button className="button" type="button" onClick={submit}>Complete adventure</button></div></section></main>;
+  if (completed && recommendationError) return <main className="kit-results-page"><section className="state-card" role="alert"><div className="state-icon" aria-hidden="true">!</div><p className="kicker">Something went wrong</p><h1>We couldn’t build your kit.</h1><p>{recommendationError}</p><div className="state-actions"><button className="button" type="button" onClick={submit}>Try again</button><button className="back-button" type="button" onClick={editTrip}>Edit trip details</button></div></section></main>;
+
+  if (completed && result) {
+    const state = result.recommendations.length === 0 ? "no-suitable-kit" : result.gaps.length ? "partial-kit" : "available-kit";
+    const criteria = [labels[completed.activity], labels[completed.trip.duration], labels[completed.trip.climate], labels[completed.trip.terrain]];
+    return <main className="kit-results-page">
+      <header className="kit-results-hero"><p className="kicker">Based on your trip details</p><h1>{state === "available-kit" ? "Your recommended starting kit" : state === "partial-kit" ? "Your partial starting kit" : "No suitable starting kit found"}</h1><p>{state === "available-kit" ? "We found an available match for every category in this starting kit." : state === "partial-kit" ? "We found useful matches, but some categories have no suitable available product." : "The current catalog does not have suitable available matches for these trip details."}</p><ul aria-label="Trip criteria">{criteria.map((criterion) => <li key={criterion}>{criterion}</li>)}<li>{completed.trip.groupSize} {completed.trip.groupSize === 1 ? "person" : "people"}</li><li>{labels[completed.shopper.experienceLevel]}</li><li>{labels[completed.shopper.purchasePriority]} priority</li></ul><div className="kit-actions"><button className="button secondary-button" type="button" onClick={editTrip}>Edit trip details</button><button className="back-button" type="button" onClick={reset}>Start over</button></div></header>
+      {result.recommendations.length > 0 && <section className="kit-products" aria-labelledby="kit-products-title"><div className="results-heading"><div><p className="kicker">Recommended gear</p><h2 id="kit-products-title">{result.recommendations.length} catalog {result.recommendations.length === 1 ? "match" : "matches"}</h2></div><p>A focused starting point—not a claim of everything you need.</p></div><div className="kit-product-grid">{result.recommendations.map((recommendation) => <div className="kit-recommendation" key={recommendation.category}><ProductCard product={recommendation.product} source="recommended-kit" /><div className="recommendation-reason"><strong>Why it fits</strong><p>{recommendation.reason}</p></div></div>)}</div></section>}
+      {result.gaps.length > 0 && <section className="kit-gaps" aria-labelledby="kit-gaps-title"><p className="kicker">Catalog gaps</p><h2 id="kit-gaps-title">{state === "no-suitable-kit" ? "No suitable products available" : "Still needed for this starting kit"}</h2><div>{result.gaps.map((gap) => <article key={`${gap.category}-${gap.trace.ruleId}`}><span aria-hidden="true">!</span><div><h3>{gap.category.replaceAll("-", " ")}</h3><strong>{gap.status === "unavailable" ? "Suitable match currently unavailable" : "No suitable match"}</strong><p>{gap.reason}</p></div></article>)}</div></section>}
+    </main>;
+  }
+
+  if (reviewing) return <main className="questionnaire-page"><section className="questionnaire-shell"><p className="kicker">Review your adventure</p><h1>Does everything look right?</h1><p className="questionnaire-intro">Edit any answer before generating your recommendations.</p><dl className="review-list">{steps.map((item, index) => <div key={item.key}><dt>{answerLabels[item.key]}</dt><dd>{item.key === "groupSize" ? `${answers.groupSize} ${answers.groupSize === 1 ? "person" : "people"}` : labels[String(answers[item.key])]}<button type="button" onClick={() => { setStepIndex(index); setReviewing(false); setError(""); }}>Edit <span className="sr-only">{answerLabels[item.key]}</span></button></dd></div>)}</dl>{error && <p className="questionnaire-error" role="alert">{error}</p>}<div className="questionnaire-actions"><button className="back-button" type="button" onClick={() => { setReviewing(false); setStepIndex(steps.length - 1); }}>Back</button><button className="button" type="button" onClick={submit}>Generate recommendations</button></div></section></main>;
 
   const progress = Math.round(((stepIndex + 1) / steps.length) * 100);
   return <main className="questionnaire-page"><section className="questionnaire-shell"><div className="questionnaire-progress"><span>Step {stepIndex + 1} of {steps.length}</span><span>{progress}%</span><div><i style={{ width: `${progress}%` }} /></div></div><p className="kicker">Build my kit</p><h1>{step.title}</h1><p className="questionnaire-intro">{step.hint}</p><fieldset className="questionnaire-options"><legend className="sr-only">{step.title}</legend>{step.options ? step.options.map((option) => <label key={option} className={answers[step.key] === option ? "selected" : ""}><input type="radio" name={step.key} value={option} checked={answers[step.key] === option} onChange={() => setAnswer(step.key, option)} /><span><strong>{labels[option]}</strong>{step.key === "activity" && <small>{activities.find((activity) => activity.slug === option)?.eyebrow}</small>}</span></label>) : <label className="group-size"><span>Number of people</span><input type="number" min="1" max="20" inputMode="numeric" value={answers.groupSize ?? ""} onChange={(event) => setAnswer("groupSize", event.target.value === "" ? null : Number(event.target.value))} /></label>}</fieldset>{error && <p className="questionnaire-error" role="alert">{error}</p>}<div className="questionnaire-actions"><button className="back-button" type="button" disabled={stepIndex === 0} onClick={() => { setStepIndex((value) => Math.max(0, value - 1)); setError(""); }}>Back</button><button className="button" type="button" onClick={next}>{stepIndex === steps.length - 1 ? "Review answers" : "Continue"}</button></div></section></main>;
