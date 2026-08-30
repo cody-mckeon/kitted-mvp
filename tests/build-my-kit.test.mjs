@@ -39,3 +39,13 @@ test("SLI-69 trip intent uses a stable structured contract", async () => {
   const source = await readFile(new URL("../lib/trip-intent.ts", import.meta.url), "utf8");
   for (const text of ["schemaVersion: 1", "trip:", "shopper:", "Trip intent is incomplete"]) assert.ok(source.includes(text), `missing ${text}`);
 });
+
+test("SLI-44 adds individual recommendations and the active modified kit through the shared cart", async () => {
+  const source = await readFile(new URL("../components/build-my-kit-questionnaire.tsx", import.meta.url), "utf8");
+  for (const text of ["useCart()", "addProduct(product)", "Add this product", "Add current kit to cart", "activeKit.filter", "Remove from kit", "Choose an alternative"]) assert.ok(source.includes(text), `missing ${text}`);
+});
+
+test("SLI-44 reports individual, complete and partial adds with required analytics context", async () => {
+  const source = await readFile(new URL("../components/build-my-kit-questionnaire.tsx", import.meta.url), "utf8");
+  for (const text of ["product_added_to_cart", "kit_added_to_cart", "recommendation_source", "kit_context", "product_id", "quantity", "price", "kit_size", "result_state", "partial", "complete"]) assert.ok(source.includes(text), `missing ${text}`);
+});
