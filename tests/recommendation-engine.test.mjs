@@ -119,6 +119,7 @@ test("alternatives clearly support a no-match state", () => {
   const result = recommendStartingKit(trip, catalog.products);
   const recommendation = result.recommendations[0];
   assert.deepEqual(getRecommendationAlternatives(recommendation, trip, [recommendation.product]), []);
+});
 test("alternatives preserve the category and catalog product data without duplicating the current recommendation", () => {
   const trip = intent("backpacking");
   const current = recommendStartingKit(trip, catalog.products).recommendations.find((item) => item.category === "sleeping-bags");
