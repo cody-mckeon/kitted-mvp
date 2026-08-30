@@ -16,7 +16,7 @@ export default async function ActivityPage({ params }: { params: Promise<{ activ
       {products.length === 0 ? (
         <section className="state-card" aria-live="polite"><span className="state-icon">⌁</span><h2>No gear here yet</h2><p>We’re still building this collection. Choose another activity to keep exploring.</p><Link className="button" href="/#activities">Browse all activities</Link></section>
       ) : (
-        <ProductListing products={products} heading={`Gear for ${activity.name.toLowerCase()}`} />
+        <ProductListing products={products} heading={`Gear for ${activity.name.toLowerCase()}`} source={`activity:${activity.slug}`} />
       )}
     </main>
   );
