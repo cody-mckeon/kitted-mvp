@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ProductCard } from "@/components/product-card";
+import { ProductListing } from "@/components/product-listing";
 import { getActivity, getProductsByActivity } from "@/lib/catalog";
 
 export default async function ActivityPage({ params }: { params: Promise<{ activity: string }> }) {
@@ -16,9 +16,7 @@ export default async function ActivityPage({ params }: { params: Promise<{ activ
       {products.length === 0 ? (
         <section className="state-card" aria-live="polite"><span className="state-icon">⌁</span><h2>No gear here yet</h2><p>We’re still building this collection. Choose another activity to keep exploring.</p><Link className="button" href="/#activities">Browse all activities</Link></section>
       ) : (
-        <section className="products-section"><div className="results-heading"><h2>Gear for {activity.name.toLowerCase()}</h2><p>{products.length} {products.length === 1 ? "product" : "products"}</p></div><div className="product-grid">
-          {products.map((product) => <ProductCard product={product} key={product.id} />)}
-        </div></section>
+        <ProductListing products={products} heading={`Gear for ${activity.name.toLowerCase()}`} />
       )}
     </main>
   );
