@@ -55,3 +55,49 @@ test("purchase priority deterministically changes selection where catalog values
   assert.ok(cheaper.product.price <= lighter.product.price);
   assert.ok(lighter.product.filterAttributes.weightGrams <= cheaper.product.filterAttributes.weightGrams);
 });
+
+test("backpacking returns the best available tent when soft trip signals do not all match", () => {
+  const result = recommendStartingKit(intent("backpacking", { trip: { duration: "day-trip", climate: "warm-dry", terrain: "snow-ice", groupSize: 2 }, shopper: { experienceLevel: "experienced", purchasePriority: "balanced" } }), catalog.products);
+  const tent = result.recommendations.find((item) => item.category === "tents");
+  assert.equal(tent?.product.id, "KIT-0001");
+  assert.match(tent.reason, /best available match/);
+  assert.equal(typeof tent.trace.softScore, "number");
+});
+
+for (const category of ["sleeping-bags", "sleeping-pads"]) {
+  test(`backpacking uses best-match ranking for ${category}`, () => {
+    const result = recommendStartingKit(intent("backpacking", { trip: { duration: "day-trip", climate: "wet", terrain: "snow-ice", groupSize: 7 }, shopper: { experienceLevel: "first-timer", purchasePriority: "lower-weight" } }), catalog.products);
+    const recommendation = result.recommendations.find((item) => item.category === category);
+    assert.ok(recommendation, `expected an available ${category} best match`);
+    assert.match(recommendation.reason, /best available match/);
+  });
+}
+
+test("tent capacity remains a hard constraint", () => {
+  const result = recommendStartingKit(intent("backpacking", { trip: { groupSize: 3 } }), catalog.products);
+  assert.equal(result.recommendations.some((item) => item.category === "tents"), false);
+  assert.equal(result.gaps.find((gap) => gap.category === "tents")?.status, "no-suitable-product");
+});
+
+test("out-of-stock products are never selected even when they are the stronger soft match", () => {
+  const availableTent = catalog.products.find((product) => product.id === "KIT-0001");
+  const unavailableTent = { ...availableTent, id: "TEST-OUT", name: "Unavailable exact match", availability: { status: "out-of-stock", quantity: 0, addToCartEligible: false }, recommendationAttributes: { ...availableTent.recommendationAttributes, experienceLevels: ["beginner"], tripDurationDays: { min: 3, max: 3 }, climates: ["temperate"], terrains: ["trail"] } };
+  const result = recommendStartingKit(intent("backpacking"), [unavailableTent, availableTent]);
+  assert.equal(result.recommendations.find((item) => item.category === "tents")?.product.id, "KIT-0001");
+});
+
+test("no-suitable-product remains when no product satisfies category, activity, and capacity", () => {
+  const campingOnlyTent = catalog.products.find((product) => product.id === "KIT-0002");
+  const result = recommendStartingKit(intent("backpacking"), [campingOnlyTent]);
+  assert.equal(result.gaps.find((gap) => gap.category === "tents")?.status, "no-suitable-product");
+});
+
+test("equal rankings use product id as a deterministic stable tie breaker", () => {
+  const original = catalog.products.find((product) => product.id === "KIT-0004");
+  const later = { ...original, id: "TEST-Z" };
+  const earlier = { ...original, id: "TEST-A" };
+  const first = recommendStartingKit(intent("backpacking"), [later, earlier]).recommendations.find((item) => item.category === "sleeping-bags");
+  const second = recommendStartingKit(intent("backpacking"), [earlier, later]).recommendations.find((item) => item.category === "sleeping-bags");
+  assert.equal(first?.product.id, "TEST-A");
+  assert.equal(second?.product.id, "TEST-A");
+});
